@@ -1,0 +1,37 @@
+
+
+.bngNavbar
+{
+    background-color: red;
+    color: black;
+}
+
+.bngNavbar a
+{
+    color: black;
+}
+
+.bngNavbar a:hover
+{
+    color: yellow;
+}
+
+
+table
+{
+    width: 60%;
+    table-layout: fixed;
+}
+
+th, td
+{
+    margin: 10px
+}
+
+.center
+{
+    margin: auto;
+    /* width: 60%;
+    border: 5px solid #FFFF00;
+    padding: 10px; */
+}
