@@ -1,35 +1,27 @@
-
-
-.bngNavbar
-{
-    background-color: red;
+.bngNavbar {
+    background-color: rgb(255, 111, 0);
     color: black;
 }
 
-.bngNavbar a
-{
+.bngNavbar a {
     color: black;
 }
 
-.bngNavbar a:hover
-{
+.bngNavbar a:hover {
     color: yellow;
 }
 
-
-table
-{
+table {
     width: 60%;
     table-layout: fixed;
 }
 
-th, td
-{
+th,
+td {
     margin: 10px
 }
 
-.center
-{
+.center {
     margin: auto;
     /* width: 60%;
     border: 5px solid #FFFF00;

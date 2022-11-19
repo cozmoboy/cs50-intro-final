@@ -5,5 +5,9 @@
 {% endblock %}
 
 {% block main %}
-    Make A PC
+    Make A PC</br>
+    Warning: This site does not store permanent information on your device. Making a new PC will erase any current PC you have in play.
+    <form action="/pcMain" method="post">
+        <button type="submit">get new PC</button>
+    </form>
 {% endblock %}

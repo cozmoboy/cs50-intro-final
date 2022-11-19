@@ -5,5 +5,14 @@
 {% endblock %}
 
 {% block main %}
-   PC MAIN PLAY SCREEN
+
+   {% if pc %}
+      PC Name: {{ pc["name"]}}</br>
+      PC Came: {{ pc["class"]}}</br>
+      PC Hp: {{ pc["hp"]}}</br>
+      PC current Healt: {{ pc["currentHP"]}}</br>
+
+   {% else %}
+      PC MAIN PLAY SCREEN
+   {% endif %}
 {% endblock %}

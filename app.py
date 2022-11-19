@@ -1,15 +1,13 @@
 import os
 import math
 import ast
+import helpers
+import classes
 
 from cs50 import SQL
 # import datetime
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
-# from tempfile import mkdtemp
-# from werkzeug.security import check_password_hash, generate_password_hash
-
-# from helpers import apology, login_required, lookup, usd, buyStock, sellStock, allUserInfo, checkUserBalance, userTransactionHistory, setUserBasicInfo, checkUserStockOfCompany, isNameNewAndValid, userStockSymbols
 
 # Configure application
 app = Flask(__name__)
@@ -47,6 +45,7 @@ def after_request(response):
 @app.route("/", methods=["GET", "POST"])
 # @login_required
 def index():
+    
     # if session.get("user_id"):
     #     """Show portfolio of stocks"""
     #     userDict = allUserInfo(db)
@@ -60,21 +59,29 @@ def index():
 # -----------------  pcMAIN   ---------------------------
 @app.route("/pcMain", methods=["GET", "POST"])
 def pcMain():
-    """Log user in"""
-
-    # Forget any user_id
-    # session.clear()
-
+    print('IN pcMAIN ..........', flush=True)
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
-        # Redirect user to home page
-        # return redirect("/")
-        return render_template("/pcMain.html")
-
-    # User reached route via GET (as by clicking a link or via redirect)
-    else:
-        return render_template("/pcMain.html")
+        print('inside pcMain POST', flush=True)
+        if session.get("pc"):
+            pc = session.get("pc")
+            print('YES pc', flush=True)
+            print(pc, flush=True)
+            return render_template("/pcMain.html", pc = pc)
+        else:
+            pc = classes.PC()
+            helpers.savePC(pc);
+            print('NEW pc', flush=True)
+            print(pc, flush=True)
+            return render_template("/pcMain.html", pc = pc)
+    
+    
+    # if session.get("pc"):
+    #     pc = session.get("pc")
+    # else:
+    #     pc = classes.PC()
+    print('inside pcMain GET', flush=True)
+    return render_template("/pcMain.html")
 
 
 # -----------------  LOGOUT   ---------------------------
@@ -107,7 +114,7 @@ def gmMain():
     else:
         return render_template("/gmMain.html")
 
-# -----------------  pcMAIN   ---------------------------
+# -----------------  makePC   ---------------------------
 @app.route("/makePC", methods=["GET", "POST"])
 def makePC():
     """Log user in"""
