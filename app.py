@@ -98,10 +98,6 @@ def logout():
 # -----------------  gmMAIN  ---------------------------
 @app.route("/gmMain", methods=["GET", "POST"])
 def gmMain():
-    """Log user in"""
-
-    # Forget any user_id
-    # session.clear()
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
@@ -117,18 +113,22 @@ def gmMain():
 # -----------------  makePC   ---------------------------
 @app.route("/makePC", methods=["GET", "POST"])
 def makePC():
-    """Log user in"""
-
-    # Forget any user_id
-    # session.clear()
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         return render_template("/makePC.html")
 
-        # Redirect user to home page
-        # return redirect("/")
-
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/makePC.html")
+ 
+    
+@app.route("/fantasyPC", methods=["GET", "POST"])
+def fantasyPC():
+    if request.method == "POST":
+        return render_template("/fantasyPC.html")
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("/fantasyPC.html")
+    
