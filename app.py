@@ -13,6 +13,7 @@ from cs50 import SQL
 # import datetime
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
+from helpers import dictionaryWithNameFromArray
 
 # Configure application
 app = Flask(__name__)
@@ -126,7 +127,8 @@ def fantasyPC():
         return render_template("/fantasyPC.html")
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("/fantasyPC.html")
+        
+        return render_template("/fantasyPC.html", genre = dictionaryWithNameFromArray("fantasy", data.GENRES))
     
 
 @app.route("/westernPC", methods=["GET", "POST"])

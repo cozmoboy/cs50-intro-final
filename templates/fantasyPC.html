@@ -4,19 +4,19 @@
     Fantasy PC Creator
 {% endblock %}
 
+{% block format %}class="fantasy"{% endblock %}
+
 {% block main %}
     <p>
         This is where you </br>
         Make a Fantasy PC
     </p>
+    {% for class in genre.classes %}
     <form action="/pcMain" method="post">
-
-
-
-
-
-
-        <button class="fantasy" type="submit">CREATE</button>
+        <input name="genre" type="hidden" value="fantasy">
+        <input name="class" type="hidden" value="{{ class }}">
+        <button class="fantasy" type="submit">C{{ class }}</button>
     </form>
+    {% endfor %}
 
 {% endblock %}

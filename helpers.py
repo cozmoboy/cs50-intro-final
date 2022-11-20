@@ -21,6 +21,7 @@ def savePC(pc):
     session["pc"] = pc
     return None
 
+
 def arrayFromClassChoices(pcClass, keyName):
     myArray = []
     if pcClass[keyName]["choose"]:
@@ -31,16 +32,16 @@ def arrayFromClassChoices(pcClass, keyName):
             specs.remove(x)
     return myArray
 
-def classWithName(name):
-    for pcClass in data.GENRES:
+
+def dictionaryWithNameFromArray(name, array):
+    for pcClass in array:
         if pcClass["name"] == name:
             return pcClass
     return {"name": "oops"}
-
-    
+  
 
 def makePCofClass(classStr, genre):
-    pcClass = classWithName(classStr)
+    pcClass = dictionaryWithNameFromArray(classStr, data.GENRES)
     pc = classes.PC()
     pc.name = random.choice(NAMES) + " the " + pcClass["name"]
     pc.strength = random.randint(1, 6)
@@ -65,6 +66,7 @@ def makePCofClass(classStr, genre):
     pc.money = pcClass["startCash"] + genre["startingCash"]
     pc.spells = arrayFromClassChoices(pcClass, "spells")
     pc.languages = genre["commonLanguages"] + arrayFromClassChoices(pcClass, "weaponMasteries") 
+    savePC(pc)
     return pc
     
     
