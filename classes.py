@@ -9,19 +9,28 @@ import math
 # from datetime import datetime
 
 class PC:
+    name = "Joe Betelnut"
     strength = 3
     dexterity = 3
-    intell = 3
+    intel = 3
     presence = 3
     sanity = 3
     hp = 6
     currentHP = 6
-    name = "Joe Betelnut"
-    pcClass = "none"
+    species = "Human"
+    animalStock = "Monkey"
+    cClass = "none"
     specials = []
     professions = []
     knacks = []
     inventory = []
+    resources = []
+    notes = []
+    weaponPro = []
+    armorPro = []
+    money = 0.0
+    
+    
 
 
 class Special:
@@ -37,6 +46,7 @@ class Item:
     damageMod = 0
     advantage = 0
     value = 0
+    
 
 
 
