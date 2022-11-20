@@ -1,8 +1,13 @@
 import os
-import math
-import ast
+#import math
+#import ast
 import helpers
 import classes
+import data
+import bestiary
+
+# export FLASK_APP=app.py
+# export FLASK_DEBUG=1
 
 from cs50 import SQL
 # import datetime
@@ -45,15 +50,12 @@ def after_request(response):
 @app.route("/", methods=["GET", "POST"])
 # @login_required
 def index():
-    
-    # if session.get("user_id"):
-    #     """Show portfolio of stocks"""
-    #     userDict = allUserInfo(db)
-    #     # isNameNewAndValid(userDict["userName"], db)
-    #     return render_template("/index.html", userDict=userDict)
-    # else:
-    #     return redirect("/login")
-    return render_template("/index.html")
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        return render_template("/index.html")
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("/index.html")
 
 
 # -----------------  pcMAIN   ---------------------------
@@ -95,29 +97,24 @@ def logout():
     # Redirect user to login form
     return redirect("/")
 
+
 # -----------------  gmMAIN  ---------------------------
 @app.route("/gmMain", methods=["GET", "POST"])
 def gmMain():
-
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         return render_template("/gmMain.html")
-
-        # Redirect user to home page
-        # return redirect("/")
-
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/gmMain.html")
 
-# -----------------  makePC   ---------------------------
+
+# -----------------  makePC  views ---------------------------
 @app.route("/makePC", methods=["GET", "POST"])
 def makePC():
-
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         return render_template("/makePC.html")
-
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/makePC.html")
@@ -127,8 +124,35 @@ def makePC():
 def fantasyPC():
     if request.method == "POST":
         return render_template("/fantasyPC.html")
-
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/fantasyPC.html")
     
+
+@app.route("/westernPC", methods=["GET", "POST"])
+def westernPC():
+    if request.method == "POST":
+        return render_template("/westernPC.html")
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("/westernPC.html")
+
+
+@app.route("/scifiPC", methods=["GET", "POST"])
+def scifiPC():
+    if request.method == "POST":
+        return render_template("/scifiPC.html")
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("/scifiPC.html")
+    
+
+@app.route("/postApPC", methods=["GET", "POST"])
+def postApPC():
+    if request.method == "POST":
+        return render_template("/postApPC.html")
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("/postApPC.html")
+    
+

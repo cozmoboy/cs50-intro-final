@@ -4,6 +4,7 @@ import urllib.parse
 import math
 
 
+
 # from flask import redirect, render_template, request, session
 # from functools import wraps
 # from datetime import datetime
@@ -20,6 +21,8 @@ class PC:
     species = "Human"
     animalStock = "Monkey"
     cClass = "none"
+    focus = "None"
+    paths = []
     specials = []
     professions = []
     knacks = []
@@ -27,8 +30,11 @@ class PC:
     resources = []
     notes = []
     weaponPro = []
+    weaponMast = []
     armorPro = []
     money = 0.0
+    spells = []
+    languages = []
     
     
 

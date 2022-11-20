@@ -1,5 +1,5 @@
 .bngNavbar {
-    background-color: rgb(255, 111, 0);
+    background-color: rgb(155, 155, 155);
     color: black;
 }
 
@@ -26,4 +26,24 @@ td {
     /* width: 60%;
     border: 5px solid #FFFF00;
     padding: 10px; */
+}
+
+.western {
+    background-color: brown;
+    color: yellow;
+}
+
+.scifi {
+    background-color: black;
+    color: greenyellow;
+}
+
+.fantasy {
+    background-color: purple;
+    color: gold;
+}
+
+.postApocalyptic {
+    background-color: rgb(124, 255, 107);
+    color: rgb(122, 18, 202);
 }
