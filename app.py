@@ -66,6 +66,12 @@ def pcMain():
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         
+        cClass = request.form.get("class");
+        genre = request.form.get("genre");
+        
+        print("Genre: " + genre, flush=True);
+        print("Class: " + cClass, flush=True);
+        
         
         print('inside pcMain POST', flush=True)
         if session.get("pc"):
@@ -74,7 +80,7 @@ def pcMain():
             # print(pc, flush=True)
             # return render_template("/pcMain.html", pc = pc)
 
-            pc = makePCofClass("Fighter", "fantasy")
+            pc = makePCofClass(cClass, genre)
             return render_template("/pcMain.html", pc = pc)
         
 

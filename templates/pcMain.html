@@ -38,6 +38,10 @@
       Class: {{ pc["cClass"]}}</br></br>
       Hp: {{ pc["hp"]}}   Current Health: {{ pc["currentHP"]}}</br></br>
       
+      {% if pc["specials"] is defined and pc["specials"]|length > 0 %}
+      Specials: {{ pc["specials"]|join(', ') }}</br></br></br>
+      {% endif %}
+      
       {% if pc["weaponPro"] is defined and pc["weaponPro"]|length > 0 %}
          Weapon Proficiencies: {{ pc["weaponPro"]|join(', ') }}</br>      
       {% endif %}
@@ -50,16 +54,10 @@
          Armor Allowed: {{ pc["armorPro"]|join(' ') }}</br></br>
       {% endif %}
 
-      {% if pc["specials"] is defined and pc["specials"]|length > 0 %}
-         Specials: {{ pc["specials"]|join(', ') }}</br>
-      {% endif %}
+
 
       {% if pc["languages"] is defined and pc["languages"]|length > 0 %}
          Languages: {{ pc["languages"]|join(', ') }}</br></br>
-      {% endif %}
-
-      {% if pc["armorPro"] is defined and pc["armorPro"]|length > 0 %}
-         Underpants Armor Allowed: {{ pc["armorPro"]|join(' ') }}</br></br>
       {% endif %}
 
       Gold: {{ pc["money"]}}</br></br>
