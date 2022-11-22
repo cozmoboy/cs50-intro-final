@@ -18,8 +18,8 @@ class PC:
     sanity = 3
     hp = 6
     currentHP = 6
-    species = "Human"
-    animalStock = "Monkey"
+    species = "None"
+    animalStock = "None"
     cClass = "none"
     focus = "None"
     paths = []
@@ -35,6 +35,7 @@ class PC:
     money = 0.0
     spells = []
     languages = []
+    genre = "None"
     
     
 

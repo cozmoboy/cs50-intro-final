@@ -7,10 +7,102 @@
 {% block main %}
 
    {% if pc %}
-      PC Name: {{ pc["name"]}}</br>
-      PC Came: {{ pc["class"]}}</br>
-      PC Hp: {{ pc["hp"]}}</br>
-      PC current Healt: {{ pc["currentHP"]}}</br>
+   
+      Name: {{ pc["name"]}}</br>
+      <button id="strB">STR: {{ pc["strength"]}}</button>
+      <button id="dexB">DEX: {{ pc["dexterity"]}}</button>
+      <button id="intB">INT: {{ pc["intel"]}}</button>
+      <button id="preB">PRE: {{ pc["presence"]}}</button>
+
+      <script>
+         const strB = document.getElementById("strB");
+         const dexB = document.getElementById("dexB");
+         const intB = document.getElementById("intB");
+         const preB = document.getElementById("preB");
+
+         strB.addEventListener('click', function(){ popoverDice("STR", {{ pc["strength"]}}) }, false);
+
+         dexB.addEventListener('click', function(){ popoverDice("DEX", {{ pc["dexterity"]}}) }, false);
+
+         intB.addEventListener('click', function(){ popoverDice("INT", {{ pc["intel"]}}) }, false);
+
+         preB.addEventListener('click', function(){ popoverDice("PRE", {{ pc["presence"]}}) }, false);
+
+      </script>
+
+            
+      {% if pc["genre"] is defined and pc["genre"]=="horror" %}
+         SAN: {{ pc["sanity"] }}
+      {% endif %}</br></br>
+
+      Class: {{ pc["cClass"]}}</br></br>
+      Hp: {{ pc["hp"]}}   Current Health: {{ pc["currentHP"]}}</br></br>
+      
+      {% if pc["weaponPro"] is defined and pc["weaponPro"]|length > 0 %}
+         Weapon Proficiencies: {{ pc["weaponPro"]|join(', ') }}</br>      
+      {% endif %}
+
+      {% if pc["weaponMast"] is defined and pc["weaponMast"]|length > 0 %}
+         Weapon Masteries: {{ pc["weaponMast"]|join(' ') }}</br>
+      {% endif %}
+
+      {% if pc["armorPro"] is defined and pc["armorPro"]|length > 0 %}
+         Armor Allowed: {{ pc["armorPro"]|join(' ') }}</br></br>
+      {% endif %}
+
+      {% if pc["specials"] is defined and pc["specials"]|length > 0 %}
+         Specials: {{ pc["specials"]|join(', ') }}</br>
+      {% endif %}
+
+      {% if pc["languages"] is defined and pc["languages"]|length > 0 %}
+         Languages: {{ pc["languages"]|join(', ') }}</br></br>
+      {% endif %}
+
+      {% if pc["armorPro"] is defined and pc["armorPro"]|length > 0 %}
+         Underpants Armor Allowed: {{ pc["armorPro"]|join(' ') }}</br></br>
+      {% endif %}
+
+      Gold: {{ pc["money"]}}</br></br>
+
+      {% if pc["inventory"] is defined and pc["inventory"]|length > 0 %}
+         Inventory: {{ pc["inventory"]|join(', ')}}</br>
+      {% endif %}
+
+      {% if texts is defined and texts|length > 0 %}
+    ...
+      {% endif %}
+
+      {% if texts is defined and texts|length > 0 %}
+    ...
+      {% endif %}
+
+      {% if texts is defined and texts|length > 0 %}
+    ...
+      {% endif %}
+
+      {% if texts is defined and texts|length > 0 %}
+    ...
+      {% endif %}
+
+      {% if texts is defined and texts|length > 0 %}
+    ...
+      {% endif %}
+
+
+      <article id="characterMakerArticle">
+         <div class="container" id="container"></div>
+         <!-- <div class="container" id="container"></div>
+         
+         <div class="buttonPanel panel" id="buttonPanel">
+             
+         </div> -->
+
+         <div class="characterPanel panel" id="characterViewPanel">
+
+         </div>
+
+
+     </article>
 
    {% else %}
       PC MAIN PLAY SCREEN

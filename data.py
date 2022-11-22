@@ -1043,7 +1043,7 @@ CLASSES = [
     # {
     #     "name": "Template",
     #     "attMods": [{"attribut": "att", "mod": 0}],
-    #     "proffessions": {"choose": False, "number": 0, "list": ["Doctor", "Farmer"]},
+    #     "professions": {"choose": False, "number": 0, "list": ["Doctor", "Farmer"]},
     #     "knacks": {"choose": False, "number": 0, "list": ["Chess", "Drawing"]},
     #     "weapons": ["heavy", "Medium", "Light", "Ranged", "Melee", "None"],
     #     "armor": ["None", "Light", "Medium", "heavy"],
@@ -1064,7 +1064,7 @@ CLASSES = [
     {
         "name": "Fighter",
         "attMods": [{"attribut": "hp", "mod": 6}],
-        "proffessions": {"choose": False, "number": 0, "list": []},
+        "professions": {"choose": False, "number": 0, "list": []},
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Any"],
         "armor": ["Any"],
@@ -1085,7 +1085,7 @@ CLASSES = [
     {
         "name": "Thief",
         "attMods": [],
-        "proffessions": {"choose": False, "number": 0, "list": []},
+        "professions": {"choose": False, "number": 0, "list": []},
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Light", "Medium"],
         "armor": ["Light"],
@@ -1106,7 +1106,7 @@ CLASSES = [
     {
         "name": "Wizard",
         "attMods": [{"attribut": "att", "mod": 0}],
-        "proffessions": {"choose": False, "number": 0, "list": []},
+        "professions": {"choose": False, "number": 0, "list": []},
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["None"],
         "armor": ["None"],
@@ -1127,7 +1127,7 @@ CLASSES = [
     {
         "name": "Paladin",
         "attMods": [{"attribut": "att", "mod": 0}],
-        "proffessions": {"choose": False, "number": 0, "list": []},
+        "professions": {"choose": False, "number": 0, "list": []},
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Any"],
         "armor": ["Any"],
@@ -1148,7 +1148,7 @@ CLASSES = [
     {
         "name": "Druid",
         "attMods": [],
-        "proffessions": {"choose": False, "number": 0, "list": []},
+        "professions": {"choose": False, "number": 0, "list": []},
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Medium"],
         "armor": ["Light"],
@@ -1170,7 +1170,7 @@ CLASSES = [
     {
         "name": "Ranger",
         "attMods": [],
-        "proffessions": {"choose": False, "number": 0, "list": []},
+        "professions": {"choose": False, "number": 0, "list": []},
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Any"],
         "armor": ["Light", "Medium"],
@@ -1192,7 +1192,7 @@ CLASSES = [
     {
         "name": "Monk",
         "attMods": [],
-        "proffessions": {"choose": False, "number": 0, "list": []},
+        "professions": {"choose": False, "number": 0, "list": []},
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Light", "Medium"],
         "armor": ["Light"],
@@ -1213,7 +1213,7 @@ CLASSES = [
     {
         "name": "Barbarian",
         "attMods": [],
-        "proffessions": {"choose": False, "number": 0, "list": []},
+        "professions": {"choose": False, "number": 0, "list": []},
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Any"],
         "armor": ["Any"],

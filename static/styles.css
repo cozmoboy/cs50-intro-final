@@ -47,3 +47,30 @@ td {
     background-color: rgb(124, 255, 107);
     color: rgb(122, 18, 202);
 }
+
+.overlayElement {
+    border: 2px solid rgb(142, 166, 175);
+    text-align: center;
+    width: 70%;
+    /* margin: 10% auto; */
+    /* background: rgba(31, 38, 56, 0.514); */
+    /* background: pink; */
+    /* position: absolute; */
+    /* position: relative; 
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+    /* width: 90%;
+  height: 90%; */
+    /* overflow: scroll; */
+    /* top: 50%;
+  left: 50%; */
+    /* margin: 10%; */
+    /*margin-right: -50%;*/
+    /* transform: translate(-50%, -50%); */
+    border-radius: 15px;
+}
+
+.translucent {
+    background: rgba(9, 49, 141, 0.3);
+}

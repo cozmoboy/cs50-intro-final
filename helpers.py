@@ -25,7 +25,7 @@ def savePC(pc):
 def arrayFromClassChoices(pcClass, keyName):
     myArray = []
     if pcClass[keyName]["choose"]:
-        specs = pcClass[keyName]["list"]
+        specs = pcClass[keyName]["list"].copy()
         for i in range(pcClass[keyName]["number"]):
             x = random.choice(specs)
             myArray.append(x)
@@ -38,10 +38,21 @@ def dictionaryWithNameFromArray(name, array):
         if pcClass["name"] == name:
             return pcClass
     return {"name": "oops"}
+
+def showMe(myString, xObect):
+    print(".........HERE IT COMES................", flush=True)
+    print("......................................", flush=True)
+    print(myString, flush=True)
+    print("********.", flush=True)
+    print(xObect, flush=True)
+    print("......................................", flush=True)
+    print(".........END..........................", flush=True)
   
 
-def makePCofClass(classStr, genre):
-    pcClass = dictionaryWithNameFromArray(classStr, data.GENRES)
+def makePCofClass(classStr, genreStr):
+    pcClass = dictionaryWithNameFromArray(classStr, data.CLASSES)
+    genre = dictionaryWithNameFromArray(genreStr, data.GENRES)
+    showMe("this is the class: ", pcClass)
     pc = classes.PC()
     pc.name = random.choice(NAMES) + " the " + pcClass["name"]
     pc.strength = random.randint(1, 6)
@@ -66,6 +77,7 @@ def makePCofClass(classStr, genre):
     pc.money = pcClass["startCash"] + genre["startingCash"]
     pc.spells = arrayFromClassChoices(pcClass, "spells")
     pc.languages = genre["commonLanguages"] + arrayFromClassChoices(pcClass, "weaponMasteries") 
+    pc.genre = genreStr
     savePC(pc)
     return pc
     

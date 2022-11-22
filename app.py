@@ -13,7 +13,7 @@ from cs50 import SQL
 # import datetime
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
-from helpers import dictionaryWithNameFromArray
+from helpers import dictionaryWithNameFromArray, makePCofClass
 
 # Configure application
 app = Flask(__name__)
@@ -65,17 +65,27 @@ def pcMain():
     print('IN pcMAIN ..........', flush=True)
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
+        
+        
         print('inside pcMain POST', flush=True)
         if session.get("pc"):
-            pc = session.get("pc")
+            # pc = session.get("pc")
             print('YES pc', flush=True)
-            print(pc, flush=True)
+            # print(pc, flush=True)
+            # return render_template("/pcMain.html", pc = pc)
+
+            pc = makePCofClass("Fighter", "fantasy")
             return render_template("/pcMain.html", pc = pc)
+        
+
         else:
-            pc = classes.PC()
-            helpers.savePC(pc);
+            # pc = classes.PC()
+            # helpers.savePC(pc);
             print('NEW pc', flush=True)
-            print(pc, flush=True)
+            # print(pc, flush=True)
+            # return render_template("/pcMain.html", pc = pc)
+        
+            pc = makePCofClass("Fighter", "fantasy")
             return render_template("/pcMain.html", pc = pc)
     
     
