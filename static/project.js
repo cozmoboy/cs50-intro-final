@@ -69,79 +69,76 @@ function popoverRollBones() {
 
 function popoverDice(attStr, myVal) {
 
-
-
     removeOverlayMenu();
-    console.log(".......... ATTRIBUTE AND VALUE.............");
-    // console.log(attStr);
-    // log(myVal);
     var container = document.getElementById("container");
-    container.style.display = "flex";
-    ///container.style.backgroundColor = "pink";
-    //container.style.backgroundColor = "pink";
+    //container.style.display = "flex";
 
-    var popoverView = document.createElement("div");
-    popoverView.className = "overlayElement translucent"
 
-    // var nameInput = document.createElement("input");
-    // nameInput.type = "text";
-    // nameInput.value = myPC.name;
-    // nameInput.id = "nameText";
-    // nameInput.className = "bsButtonBasic bs-theme-light"; //"skillButton";
-    // nameInput.style.textAlign = "center";
-    // nameInput.style.width = "50%";
-    // nameInput.style.padding = "5px";
-    // nameInput.style.fontSize = "18px";
-    // nameInput.onkeydown = function() { if (event.key == "Enter") { myPC.name = nameInput.value;
-    //         removeOverlayMenu() } };
-    // popoverView.appendChild(nameInput);
 
+    // BUTTONS..............
     var bd6 = document.createElement("button");
-    // randomNameButton.className = "bsButtonBasic bsPaddingBasic"; //"skillButton";
-    bd6.innerHTML = "1d6";
-    bd6.onclick = function() { rollDice(1) };
+    bd6.innerHTML = "1d6<br>disadvantage";
+    bd6.onclick = function() { rollDice(1, "dice") };
 
     var b2d6 = document.createElement("button");
-    b2d6.innerHTML = "2d6";
-    b2d6.onclick = function() { rollDice(2) }
+    b2d6.innerHTML = "2d6<br>normal";
+    b2d6.onclick = function() { rollDice(2, "dice") }
 
     var b3d6 = document.createElement("button");
-    b3d6.innerHTML = "3d6";
-    b3d6.onclick = function() { rollDice(3) };
-
-    var diceDiv = document.createElement("div");
-    diceDiv.style.fontSize = "xx-large";
-    diceDiv.style.color = "black";
-    diceDiv.id = "dice";
-    diceDiv.innerHTML = popoverString(attStr, myVal);
-
-    // randomNameButton.onclick = function() { nameInput.value = randomCharacterName(); };
-
-    // var saveButton = document.createElement("button");
-    // saveButton.className = "bsButtonBasic bsPaddingBasic"; //"skillButton";
-    // saveButton.innerHTML = "Save New Name";
-    // saveButton.id = "saveName";
-    // saveButton.onclick = function() { myPC.name = nameInput.value;
-    //     saveCharacter();
-    //     displayCharacter();
-    //     removeOverlayMenu() };
+    b3d6.innerHTML = "3d6<br>advantage";
+    b3d6.onclick = function() { rollDice(3, "dice") };
 
     var cancelButton = document.createElement("button");
-    //cancelButton.className = "bsButtonBasic bsPaddingBasic"; //"skillButton";
     cancelButton.innerHTML = "Cancel";
     cancelButton.onclick = function() { removeOverlayMenu() };
 
+    var dangerDieButton = document.createElement("button");
+    dangerDieButton.innerHTML = "DANGER DIE";
+    dangerDieButton.onclick = function() { rollDice(1, "dangerDie") };
 
+
+    // DIVS.................
     var selectButtonsP = document.createElement("div");
     selectButtonsP.appendChild(bd6);
     selectButtonsP.appendChild(b2d6);
     selectButtonsP.appendChild(b3d6);
-    // selectButtonsP.appendChild(saveButton);
     selectButtonsP.appendChild(cancelButton);
+
+    var attDiv = document.createElement("div");
+    attDiv.style.fontSize = "large";
+    attDiv.style.color = "black";
+    attDiv.id = "attDiv";
+    attDiv.innerHTML = popoverString(attStr, myVal);
+
+    var diceDiv = document.createElement("div");
+    diceDiv.style.fontSize = "50px";
+    diceDiv.style.color = "black";
+    diceDiv.id = "dice";
+    diceDiv.innerHTML = "\u{2680}" + "  " + "\u{2680}";
+
+    var dangerDieDiv = document.createElement("div");
+    dangerDieDiv.style.fontSize = "50px";
+    dangerDieDiv.style.color = "red";
+    dangerDieDiv.id = "dangerDie";
+    dangerDieDiv.innerHTML = "\u{2680}";
+
+
+    var dangerButtonDiv = document.createElement("div");
+    dangerButtonDiv.style.fontSize = "large";
+    dangerButtonDiv.style.color = "red";
+    dangerButtonDiv.id = "dangerButtonDiv";
+    dangerButtonDiv.appendChild(dangerDieButton)
+
+
+    // POPOVER VIEW.......................................
+    var popoverView = document.createElement("div");
+    popoverView.className = "overlayElement translucent"
     popoverView.appendChild(selectButtonsP);
-    // popoverView.appendChild(document.createElement("/br"));
-    // popoverView.appendChild(document.createElement("/br"));
+    popoverView.appendChild(attDiv);
     popoverView.appendChild(diceDiv);
+    popoverView.appendChild(dangerDieDiv);
+    popoverView.appendChild(dangerButtonDiv);
+
 
 
     document.getElementById("container").appendChild(popoverView);
@@ -151,26 +148,48 @@ function popoverDice(attStr, myVal) {
 
 function popoverString(att, val) {
 
+    var rank = rankOfAttribute(val);
+
     var successNumString = "";
-    if (val == 1 || val == 2) {
-        successNumString = "You're " + att + "value is LOW. You succeed if any of the dice show a 6.\n";
-    } else if (val == 3 || val == 4) {
-        successNumString = "You're " + att + "value is AVERAGE. You succeed if any of the dice show a 5 or a 6.\n";
+
+    if (rank == "LOW") {
+        successNumString = "You're " + att + " value is LOW.<br>You succeed if any of the dice show a 6.\n";
+    } else if (rank == "AVERAGE") {
+        successNumString = "You're " + att + " value is AVERAGE.<br>You succeed if any of the dice show a 5 or a 6.\n";
+    } else if (rank == "HIGH") {
+        successNumString = "You're " + att + " value is HIGH.<br>You succeed if any of the dice show a 4, 5, or 6.\n";
+    } else if (rank == "SUPER") {
+        successNumString = "You're " + att + " value is SUPER.<br>You succeed if any of the dice show a 3, 4, 5, or 6.\n";
     } else {
-        successNumString = "You're " + att + "value is HIGH. You succeed if any of the dice show a 4, 5, or 6.\n";
+        successNumString = "We can't tell what your " + att + "is.<br>Roll the dice and let the GM decide what to do."
     }
 
-    var myString = "You're rolling an " + att + " check.\n " + successNumString;
+    var myString = "You're rolling an " + att + " check.<br> " + successNumString;
 
     return myString
 }
 
-function rollDice(dnum) {
+function rankOfAttribute(attVal) {
+
+    if (attVal == 1 || attVal == 2) {
+        return "LOW";
+    } else if (attVal == 3 || attVal == 4) {
+        return "AVERAGE";
+    } else if (attVal == 5 || attVal == 6) {
+        return "HIGH";
+    } else if (attVal > 6) {
+        return "SUPER";
+    } else {
+        return "UNKNOWN";
+    }
+}
+
+function rollDice(dnum, myElementID) {
     var diceString = ""
     for (let i = 0; i < dnum; i++) {
         diceString = diceString + " " + dieFaces[Math.floor(Math.random() * dieFaces.length)] + " ";
     }
-    document.getElementById("dice").innerHTML = diceString;
+    document.getElementById(myElementID).innerHTML = diceString;
 }
 
 function removeAllChildrenFrom(elementID) {
