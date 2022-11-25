@@ -39,15 +39,23 @@
       Hp: {{ pc["hp"]}}   Current Health: {{ pc["currentHP"]}}</br></br>
       
       {% if pc["specials"] is defined and pc["specials"]|length > 0 %}
-      Specials: {{ pc["specials"]|join(', ') }}</br></br></br>
+      Specials: {{ pc["specials"]|join(', ') }}</br>
+      {% for special in pc["specials"] %}
+      <button class="specButton"> {{ special }} </button></br>
+      {% endfor %}
+   </br></br></br>
       {% endif %}
       
       {% if pc["weaponPro"] is defined and pc["weaponPro"]|length > 0 %}
-         Weapon Proficiencies: {{ pc["weaponPro"]|join(', ') }}</br>      
+         Weapon Proficiencies: {{ pc["weaponPro"]|join(', ') }}</br>  
+
       {% endif %}
 
       {% if pc["weaponMast"] is defined and pc["weaponMast"]|length > 0 %}
          Weapon Masteries: {{ pc["weaponMast"]|join(' ') }}</br>
+         {% for weapon in pc["weaponMast"] %}
+         <button> {{ weapon }} </button>
+         {% endfor %}
       {% endif %}
 
       {% if pc["armorPro"] is defined and pc["armorPro"]|length > 0 %}
@@ -64,6 +72,9 @@
 
       {% if pc["inventory"] is defined and pc["inventory"]|length > 0 %}
          Inventory: {{ pc["inventory"]|join(', ')}}</br>
+         {% for item in pc["inventory"] %}
+         <button class="itemButton"> {{ item }} </button></br>
+         {% endfor %}
       {% endif %}
 
       {% if texts is defined and texts|length > 0 %}

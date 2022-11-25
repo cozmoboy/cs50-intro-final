@@ -1,4 +1,8 @@
-const dieFaces = ["\u{2680}", "\u{2681}", "\u{2682}", "\u{2683}", "\u{2684}", "\u{2685}"]
+const dieFaces = ["\u{2680}", "\u{2681}", "\u{2682}", "\u{2683}", "\u{2684}", "\u{2685}"];
+
+const dieImages = ["/static/dice/d1.png", "/static/dice/d2.png", "/static/dice/d3.png", "/static/dice/d4.png", "/static/dice/d5.png", "/static/dice/d6.png"];
+
+const delay = async(ms = 1000) => new Promise(resolve => setTimeout(resolve, ms))
 
 function removeOverlayMenu() {
     document.getElementById("container").innerHTML = "";
@@ -78,23 +82,37 @@ function popoverDice(attStr, myVal) {
     // BUTTONS..............
     var bd6 = document.createElement("button");
     bd6.innerHTML = "1d6<br>disadvantage";
-    bd6.onclick = function() { rollDice(1, "dice") };
+    bd6.className = "diceButton"
+    bd6.onclick = function() {
+        tumbleDice(1, "dice");
+        tumbleDice(1, "dangerDie");
+    };
 
     var b2d6 = document.createElement("button");
     b2d6.innerHTML = "2d6<br>normal";
-    b2d6.onclick = function() { rollDice(2, "dice") }
+    b2d6.className = "diceButton"
+    b2d6.onclick = function() {
+        tumbleDice(2, "dice");
+        tumbleDice(1, "dangerDie")
+    }
 
     var b3d6 = document.createElement("button");
     b3d6.innerHTML = "3d6<br>advantage";
-    b3d6.onclick = function() { rollDice(3, "dice") };
+    b3d6.className = "diceButton"
+    b3d6.onclick = function() {
+        tumbleDice(3, "dice");
+        tumbleDice(1, "dangerDie")
+    };
 
     var cancelButton = document.createElement("button");
     cancelButton.innerHTML = "Cancel";
+    cancelButton.className = "diceButton"
     cancelButton.onclick = function() { removeOverlayMenu() };
 
     var dangerDieButton = document.createElement("button");
     dangerDieButton.innerHTML = "DANGER DIE";
-    dangerDieButton.onclick = function() { rollDice(1, "dangerDie") };
+    dangerDieButton.className = "diceButton"
+    dangerDieButton.onclick = function() { tumbleDice(1, "dangerDie") };
 
 
     // DIVS.................
@@ -114,25 +132,28 @@ function popoverDice(attStr, myVal) {
     diceDiv.style.fontSize = "50px";
     diceDiv.style.color = "black";
     diceDiv.id = "dice";
-    diceDiv.innerHTML = "\u{2680}" + "  " + "\u{2680}";
+    // diceDiv.innerHTML = "\u{2680}" + "  " + "\u{2680}";
+    diceDiv.innerHTML = "<img src=\"/static/dice/d1.png\"style=\"width:50px; margin: 10px\"/>" + "<img src=\"/static/dice/d1.png\"style=\"width:50px; margin: 10px\"/>";;
 
     var dangerDieDiv = document.createElement("div");
     dangerDieDiv.style.fontSize = "50px";
     dangerDieDiv.style.color = "red";
     dangerDieDiv.id = "dangerDie";
-    dangerDieDiv.innerHTML = "\u{2680}";
+    //dangerDieDiv.innerHTML = "\u{2680}";
+    dangerDieDiv.innerHTML = "<img src=\"/static/dice/d1.png\"style=\"width:50px; margin: 10px; filter: invert(100%) saturate(1000%);\"/>";
 
 
     var dangerButtonDiv = document.createElement("div");
     dangerButtonDiv.style.fontSize = "large";
     dangerButtonDiv.style.color = "red";
     dangerButtonDiv.id = "dangerButtonDiv";
-    dangerButtonDiv.appendChild(dangerDieButton)
+    dangerButtonDiv.innerHTML = "Danger Die"
+        // dangerButtonDiv.appendChild(dangerDieButton)
 
 
     // POPOVER VIEW.......................................
     var popoverView = document.createElement("div");
-    popoverView.className = "overlayElement translucent"
+    popoverView.className = "overlayElement"
     popoverView.appendChild(selectButtonsP);
     popoverView.appendChild(attDiv);
     popoverView.appendChild(diceDiv);
@@ -186,10 +207,44 @@ function rankOfAttribute(attVal) {
 
 function rollDice(dnum, myElementID) {
     var diceString = ""
+        // UNICODE DICE
+        // for (let i = 0; i < dnum; i++) {
+        //     diceString = diceString + " " + dieFaces[Math.floor(Math.random() * dieFaces.length)] + " ";
+        // }
+
+    // DICE IMAGES
     for (let i = 0; i < dnum; i++) {
-        diceString = diceString + " " + dieFaces[Math.floor(Math.random() * dieFaces.length)] + " ";
+        diceString = diceString + "<img src=" + dieImages[Math.floor(Math.random() * dieImages.length)] + " style=\"width:50px; margin: 10px";
+
+        if (myElementID == "dangerDie") {
+            // diceString = diceString + "; filter: brightness(0.5) sepia(1) saturate(10000%);"
+            diceString = diceString + "; filter: invert(100%) saturate(1000%);"
+        }
+
+        diceString = diceString + "\"/>"
     }
+
+
+
+
+
     document.getElementById(myElementID).innerHTML = diceString;
+}
+
+function tumbleDice(dnum, myElementID) {
+
+    timesRoll = 10;
+
+    rollDice(dnum, myElementID);
+    diceLoop(dnum, myElementID)
+}
+
+async function diceLoop(dnum, myElementID) {
+    for (var i = 0; i < 10; i += 1) {
+        rollDice(dnum, myElementID);
+        await delay(50);
+        console.log("looping in dice");
+    }
 }
 
 function removeAllChildrenFrom(elementID) {

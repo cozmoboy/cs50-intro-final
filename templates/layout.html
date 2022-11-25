@@ -22,7 +22,7 @@
     </head>
 
     <body {% block format %}{% endblock %}>
-        <nav class="border navbar navbar-expand-md bngNavbar">
+        <nav class="border navbar navbar-expand-md bngNavbar fixed-top">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbar">
   
@@ -32,16 +32,14 @@
                             <li class="nav-item"><a class="nav-link" href="/makePC">Make a PC</a></li>
                             <li class="nav-item"><a class="nav-link" href="/gmMain">GM Screen</a></li>
                         </ul>
-                        <ul class="navbar-nav ms-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/"><a class="nav-link" href="/"><img src="../static/HomeButtonSM.png" width="50"></a></li>
-                        </ul>
+                        {% block xtraButtons %}{% endblock %}
 
                 </div>
             </div>
         </nav>
 
 
-        <main class="container-fluid py-5 text-center">
+        <main class="container-fluid py-5 text-center" style="margin-top:150px; margin-bottom=50px">
             {% block main %}{% endblock %}
         </main>
 

@@ -51,26 +51,51 @@ td {
 .overlayElement {
     border: 2px solid rgb(142, 166, 175);
     text-align: center;
-    width: 70%;
+    background-color: whitesmoke;
+    /* width: 70%; */
     /* margin: 10% auto; */
     /* background: rgba(31, 38, 56, 0.514); */
     /* background: pink; */
     /* position: absolute; */
-    /* position: relative; 
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-    /* width: 90%;
-  height: 90%; */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    /* display: flex; */
     /* overflow: scroll; */
-    /* top: 50%;
-  left: 50%; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     /* margin: 10%; */
-    /*margin-right: -50%;*/
-    /* transform: translate(-50%, -50%); */
+    /* margin-right: -50%; */
     border-radius: 15px;
 }
 
 .translucent {
     background: rgba(9, 49, 141, 0.3);
+}
+
+.diceButton {
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    border: solid black 3px;
+    margin: 4px;
+}
+
+.itemButton {
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    border: solid black 3px;
+    margin: 4px;
+    width: 100%;
+}
+
+.specButton {
+    background-color: blue;
+    color: white;
+    border-radius: 15px;
+    border: solid black 3px;
+    margin: 4px;
+    width: 100%;
 }

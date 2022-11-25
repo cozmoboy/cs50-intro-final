@@ -1,0 +1,23 @@
+Users should be able to:
+
+make a character
+    fantasy
+    western
+
+Read the Rules
+
+Roll Dice
+
+Edit their Stuff
+
+Change their HP
+
+GM should be able to choose baddies for a fight
+
+See Bestiary
+
+track baddie's HP
+
+Roll Dice
+
+Choose Map?

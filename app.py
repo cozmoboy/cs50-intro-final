@@ -4,7 +4,7 @@ import os
 import helpers
 import classes
 import data
-import bestiary
+import bestiaryAll
 
 # export FLASK_APP=app.py
 # export FLASK_DEBUG=1
@@ -172,5 +172,16 @@ def postApPC():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/postApPC.html")
+    
+
+@app.route("/bestiary", methods=["GET", "POST"])
+def besiary():
+    if request.method == "POST":       
+        myBestiary = bestiaryAll.BESTIARY;      
+        return render_template("/bestiary.html", bestiary=myBestiary)
+    
+    else:
+        myBestiary = bestiaryAll.BESTIARY;
+        return render_template("/bestiary.html", bestiary=myBestiary)
     
 
