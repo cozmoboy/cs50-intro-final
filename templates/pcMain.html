@@ -11,6 +11,7 @@
       <div class="nameDiv">
       {{ pc["name"]}}</br>
       </div>
+      <div class="classDiv">Class: {{ pc["cClass"]}}</div>
       <button class="statButton" id="strB">STR: {{ pc["strength"]}}</br><p class="toTest">click to test</p></button>
       <button class="statButton" id="dexB">DEX: {{ pc["dexterity"]}}</br><p class="toTest">click to test</p></button>
       <button class="statButton" id="intB">INT: {{ pc["intel"]}}</br><p class="toTest">click to test</p></button>
@@ -18,6 +19,7 @@
 
       <script>
          var localCurrentHP = {{ pc["currentHP"]}};
+         var localMoney = {{ pc["money"]}};
 
          const strB = document.getElementById("strB");
          const dexB = document.getElementById("dexB");
@@ -52,6 +54,19 @@
                
          }
 
+
+
+         function setMoney(newMoney) {
+            localMoney = newMoney;
+            document.getElementById("moneySpan").innerHTML = localMoney;
+         }
+
+         function addToMoney(amount) {
+            if (localMoney + amount >= 0) {
+               setMoney(localMoney + amount);
+            }
+         }
+
       </script>
 
             
@@ -59,8 +74,6 @@
          SAN: {{ pc["sanity"] }}
       {% endif %}</br></br>
 
-
-      Class: {{ pc["cClass"]}}</br></br>
       <div>
          <div class="hpDiv">
             HP Max: {{ pc["hp"]}} 
@@ -73,7 +86,7 @@
       </div>
    </br></br>
       {% if pc["specials"] is defined and pc["specials"]|length > 0 %}
-
+         <span class="catagoryTitle">Special Abilities</span></br>
          {% for special in pc["specials"] %}
 
             
@@ -81,42 +94,71 @@
                <div class="specTitle">{{ special["name"] }}</div>
                {{ special["description" ]}}
             </div>
-            
+
+          {% endfor %}
             </br>
+      {% endif %}
+
+      {% if pc["spells"] is defined and pc["spells"]|length > 0 %}
+         <span class="catagoryTitle">Spells</span></br>
+         {% for spell in pc["spells"] %}
+
+            
+            <div class="specDiv">
+               <div class="specTitle">{{ spell["name"] }}</div>
+               {{ spell["description" ]}}
+            </div>
 
           {% endfor %}
             </br>
       {% endif %}
       
       {% if pc["weaponPro"] is defined and pc["weaponPro"]|length > 0 %}
-         Weapon Proficiencies: {{ pc["weaponPro"]|join(', ') }}</br>  
+         <div class="specDiv">
+            <div class="specTitle">Weapon Proficiency</div>
+            {{ pc["weaponPro"]|join(' ') }}</br>
+         </div>
 
       {% endif %}
 
       {% if pc["weaponMast"] is defined and pc["weaponMast"]|length > 0 %}
-         Weapon Masteries: {{ pc["weaponMast"]|join(' ') }}</br>
-         {% for weapon in pc["weaponMast"] %}
-         <button> {{ weapon }} </button>
-         {% endfor %}
+         <div class="specDiv">
+            <div class="specTitle">Weapon Masteries</div>
+            {{ pc["weaponMast"]|join(' ') }}</br>
+         </div>
       {% endif %}
 
       {% if pc["armorPro"] is defined and pc["armorPro"]|length > 0 %}
-         Armor Allowed: {{ pc["armorPro"]|join(' ') }}</br></br>
+         <div class="specDiv">
+         <div class="specTitle">Armor Proficiency</div>
+         {{ pc["armorPro"]|join(' ') }}</br>
+         </div>
       {% endif %}
-
-
 
       {% if pc["languages"] is defined and pc["languages"]|length > 0 %}
-         Languages: {{ pc["languages"]|join(', ') }}</br></br>
+         <div class="specDiv">
+         <div class="specTitle">Languages</div>
+         {{ pc["languages"]|join(', ') }}</br>
+         </div>
       {% endif %}
 
-      Gold: {{ pc["money"]}}</br></br>
+      <div class="specDiv">
+         <div class="specTitle">Money</div>
+         <span id="moneySpan">{{ pc["money"]}}</span></br>
+         <button onclick="addToMoney(-10)">-10</button>
+         <button onclick="addToMoney(-1)">-1</button>
+         <button onclick="addToMoney(1)">+1</button>
+         <button onclick="addToMoney(10)">+10</button>
+      </div>
+      </br>
 
       {% if pc["inventory"] is defined and pc["inventory"]|length > 0 %}
-         Inventory: {{ pc["inventory"]|join(', ')}}</br>
+         <div class="specDiv">
+         <div class="specTitle">Inventory</div>
          {% for item in pc["inventory"] %}
-         <button class="itemButton"> {{ item }} </button></br>
+         <p class="itemP"> {{ item }} </p>
          {% endfor %}
+         </div>
       {% endif %}
 
       {% if texts is defined and texts|length > 0 %}

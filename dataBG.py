@@ -1119,7 +1119,7 @@ CLASSES = [
         "xtraGear": ["Spell Book"],
         "notes": [],
         "startCash": 0.0,
-        "spells": {"choose": False, "number": 4, "list": ARCANESPELLS},
+        "spells": {"choose": True, "number": 4, "list": ARCANESPELLS},
         "xtraLang": {"choose": False, "number": 0, "list": []}
     },
 
@@ -1140,7 +1140,7 @@ CLASSES = [
         "xtraGear": [],
         "notes": ["To successfully cast a spell, a paladin must make a PRE check instead of an INT check.", "If a paladin shows a pattern of unvirtuous behaviour, they lose their paladin status and revert to the fighter class."],
         "startCash": 0.0,
-        "spells": {"choose": False, "number": 2, "list": VIRTURESPELLS},
+        "spells": {"choose": True, "number": 2, "list": VIRTURESPELLS},
         "xtraLang": {"choose": False, "number": 0, "list": []},
     },
 
@@ -1162,7 +1162,7 @@ CLASSES = [
         "xtraGear": [],
         "notes": [],
         "startCash": 0.0,
-        "spells": {"choose": False, "number": 4, "list": NATURESPELLS},
+        "spells": {"choose": True, "number": 4, "list": NATURESPELLS},
         "xtraLang": {"choose": False, "number": 0, "list": []},
     },
 
@@ -1184,8 +1184,8 @@ CLASSES = [
         "xtraGear": [],
         "notes": [],
         "startCash": 0.0,
-        "spells": {"choose": False, "number": 2, "list": STEALTHSPELLS},
-        "xtraLang": {"choose": False, "number": 1, "list": ["Orcish", "Goblinoid", "Giant", "Molevan", "Fishfolkese", "Lizardovian", "Gnoll", "Elven", "Dwarvish", "Halfling"]}
+        "spells": {"choose": True, "number": 2, "list": STEALTHSPELLS},
+        "xtraLang": {"choose": True, "number": 1, "list": ["Orcish", "Goblinoid", "Giant", "Molevan", "Fishfolkese", "Lizardovian", "Gnoll", "Elven", "Dwarvish", "Halfling"]}
     },
 
     {
@@ -1205,7 +1205,7 @@ CLASSES = [
         "xtraGear": [],
         "notes": ["A monk starts level 1 knowing one spell from the list. Monks succeed at spell casting with a PRE check instead of an INT check. Monks may add a new spell from the list every odd numbered level thereafter."],
         "startCash": 0.0,
-        "spells": {"choose": False, "number": 1, "list": ["Cure Light Wounds", "Invisibility", "Telepathy", "Leap", "Spider", "Wind Walk", "Feather Fall"]},
+        "spells": {"choose": True, "number": 1, "list": ["Cure Light Wounds", "Invisibility", "Telepathy", "Leap", "Spider", "Wind Walk", "Feather Fall"]},
         "xtraLang": {"choose": False, "number": 0, "list": []},
     },
 
@@ -1227,8 +1227,8 @@ CLASSES = [
         "xtraGear": [],
         "notes": [],
         "startCash": 0.0,
-        "spells": {"choose": False, "number": 0, "list": ["Missile", "Invisibility"]},
-        "xtraLang": {"choose": False, "number": 0, "list": ["Missile", "Invisibility"]},
+        "spells": {"choose": False, "number": 0, "list": []},
+        "xtraLang": {"choose": False, "number": 0, "list": []},
     },
 
 ]

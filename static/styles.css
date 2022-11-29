@@ -97,13 +97,13 @@ td {
     margin: 4px;
 }
 
-.itemButton {
-    background-color: black;
-    color: white;
-    border-radius: 15px;
-    border: solid black 3px;
-    margin: 4px;
-    width: 50%;
+.itemP {
+    color: black;
+    border-top: dotted black 1px;
+    margin: 1px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .specButton {
@@ -118,7 +118,7 @@ td {
 .specDiv {
     border: solid black 1px;
     padding: 5px;
-    width: 50%;
+    width: 65%;
     left: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -127,6 +127,10 @@ td {
 
 .specTitle {
     font-family: WickedGrit;
+    border-bottom: black dotted 1px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .nameDiv {
@@ -138,6 +142,16 @@ td {
     margin: auto;
     font-family: WickedGrit;
     font-size: larger;
+}
+
+.classDiv {
+    color: black;
+    width: 80%;
+    left: 50%;
+    margin: auto;
+    font-family: WickedGrit;
+    font-size: medium;
+    padding: 3px;
 }
 
 .statButton {
@@ -167,4 +181,15 @@ td {
     margin-right: auto;
     margin-bottom: 3px;
     font-family: WickedGrit;
+}
+
+.myFooter {
+    background-color: black;
+    color: green;
+}
+
+.catagoryTitle {
+    font-family: WickedGrit;
+    font-size: x-large;
+    width: 100%;
 }
