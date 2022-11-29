@@ -3,7 +3,7 @@ import os
 #import ast
 import helpers
 import classes
-import data
+import dataBG
 import bestiaryAll
 
 # export FLASK_APP=app.py
@@ -65,24 +65,22 @@ def pcMain():
     print('IN pcMAIN ..........', flush=True)
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-        
-        cClass = request.form.get("class");
-        genre = request.form.get("genre");
-        
-        print("Genre: " + genre, flush=True);
-        print("Class: " + cClass, flush=True);
-        
-        
+
+        cClass = request.form.get("class")
+        genre = request.form.get("genre")
+
+        print("Genre: " + genre, flush=True)
+        print("Class: " + cClass, flush=True)
+
         print('inside pcMain POST', flush=True)
         if session.get("pc"):
             # pc = session.get("pc")
-            print('YES pc', flush=True)
+            print('EXISTING pc', flush=True)
             # print(pc, flush=True)
             # return render_template("/pcMain.html", pc = pc)
 
-            pc = makePCofClass(cClass, genre)
-            return render_template("/pcMain.html", pc = pc)
-        
+            pc = session.get("pc"):
+            return render_template("/pcMain.html", pc=pc)
 
         else:
             # pc = classes.PC()
@@ -90,11 +88,10 @@ def pcMain():
             print('NEW pc', flush=True)
             # print(pc, flush=True)
             # return render_template("/pcMain.html", pc = pc)
-        
+
             pc = makePCofClass("Fighter", "fantasy")
-            return render_template("/pcMain.html", pc = pc)
-    
-    
+            return render_template("/pcMain.html", pc=pc)
+
     # if session.get("pc"):
     #     pc = session.get("pc")
     # else:
@@ -135,17 +132,17 @@ def makePC():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/makePC.html")
- 
-    
+
+
 @app.route("/fantasyPC", methods=["GET", "POST"])
 def fantasyPC():
     if request.method == "POST":
         return render_template("/fantasyPC.html")
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        
-        return render_template("/fantasyPC.html", genre = dictionaryWithNameFromArray("fantasy", data.GENRES))
-    
+
+        return render_template("/fantasyPC.html", genre=dictionaryWithNameFromArray("fantasy", dataBG.GENRES))
+
 
 @app.route("/westernPC", methods=["GET", "POST"])
 def westernPC():
@@ -163,7 +160,7 @@ def scifiPC():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/scifiPC.html")
-    
+
 
 @app.route("/postApPC", methods=["GET", "POST"])
 def postApPC():
@@ -172,16 +169,18 @@ def postApPC():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/postApPC.html")
-    
+
 
 @app.route("/bestiary", methods=["GET", "POST"])
 def besiary():
-    if request.method == "POST":       
-        myBestiary = bestiaryAll.BESTIARY;      
+    if request.method == "POST":
+        myBestiary = bestiaryAll.BESTIARY
         return render_template("/bestiary.html", bestiary=myBestiary)
-    
-    else:
-        myBestiary = bestiaryAll.BESTIARY;
-        return render_template("/bestiary.html", bestiary=myBestiary)
-    
 
+    else:
+        myBestiary = bestiaryAll.BESTIARY
+        return render_template("/bestiary.html", bestiary=myBestiary)
+    
+@app.route("/updateHP", ethods=["GET", "POST"])
+def updateHP():
+    

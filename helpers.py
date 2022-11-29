@@ -4,7 +4,7 @@ import urllib.parse
 import math
 import classes
 import random
-import data
+import dataBG
 
 from flask import redirect, render_template, request, session
 
@@ -12,9 +12,8 @@ from flask import redirect, render_template, request, session
 # from flask import redirect, render_template, request, session
 # from functools import wraps
 # from datetime import datetime
-NAMES = ["Rufus", "Bagonia", "Chesterfield", "Muchacho", "Nacho", "Rebecca", "Ben", "Ola", "Rachel", "Sadie", "Zbyszek", "Halszka", "Kuba", "Armita", "Minka", "Zuzu", "Howard", "Margie", "Zeni", "Ruby", "Max"]
-
-
+NAMES = ["Rufus", "Bagonia", "Chesterfield", "Muchacho", "Nacho", "Rebecca", "Ben", "Ola", "Rachel", "Sadie",
+         "Zbyszek", "Halszka", "Kuba", "Armita", "Minka", "Zuzu", "Howard", "Margie", "Zeni", "Ruby", "Max"]
 
 
 def savePC(pc):
@@ -34,10 +33,11 @@ def arrayFromClassChoices(pcClass, keyName):
 
 
 def dictionaryWithNameFromArray(name, array):
-    for pcClass in array:
-        if pcClass["name"] == name:
-            return pcClass
+    for dict in array:
+        if dict["name"] == name:
+            return dict
     return {"name": "oops"}
+
 
 def showMe(myString, xObect):
     print(".........HERE IT COMES................", flush=True)
@@ -47,11 +47,11 @@ def showMe(myString, xObect):
     print(xObect, flush=True)
     print("......................................", flush=True)
     print(".........END..........................", flush=True)
-  
+
 
 def makePCofClass(classStr, genreStr):
-    pcClass = dictionaryWithNameFromArray(classStr, data.CLASSES)
-    genre = dictionaryWithNameFromArray(genreStr, data.GENRES)
+    pcClass = dictionaryWithNameFromArray(classStr, dataBG.CLASSES)
+    genre = dictionaryWithNameFromArray(genreStr, dataBG.GENRES)
     showMe("this is the class: ", pcClass)
     pc = classes.PC()
     pc.name = random.choice(NAMES) + " the " + pcClass["name"]
@@ -65,9 +65,9 @@ def makePCofClass(classStr, genreStr):
     pc.species = random.choice(genre["species"])
     pc.animalStock = "None"
     pc.cClass = pcClass["name"]
-    pc.specials = pcClass["specials"] + arrayFromClassChoices(pcClass, "specialsXtra")
-    pc.professions = arrayFromClassChoices(pcClass, "professions")
-    pc.knacks = arrayFromClassChoices(pcClass, "knacks")
+    pc.specials = arrayOfDictionariesWithNames(pcClass["specials"], dataBG.SPECIALS) + arrayOfDictionariesWithNames(arrayFromClassChoices(pcClass, "specialsXtra"), dataBG.SPECIALS)
+    pc.professions = arrayOfDictionariesWithNames(arrayFromClassChoices(pcClass, "professions"), dataBG.SPECIALS)
+    pc.knacks = arrayOfDictionariesWithNames(arrayFromClassChoices(pcClass, "knacks"), dataBG.PROFESSIONS)
     pc.inventory = pcClass["xtraGear"] + genre["basicKit"]
     pc.resources = arrayFromClassChoices(pcClass, "resources")
     pc.notes = pcClass["notes"]
@@ -75,25 +75,22 @@ def makePCofClass(classStr, genreStr):
     pc.weaponMast = arrayFromClassChoices(pcClass, "weaponMasteries")
     pc.armorPro = pcClass["armor"]
     pc.money = pcClass["startCash"] + genre["startingCash"]
-    pc.spells = arrayFromClassChoices(pcClass, "spells")
-    pc.languages = genre["commonLanguages"] + arrayFromClassChoices(pcClass, "weaponMasteries") 
+    pc.spells = arrayOfDictionariesWithNames(arrayFromClassChoices(pcClass, "spells"), dataBG.SPELLS)
+    pc.languages = genre["commonLanguages"] + arrayFromClassChoices(pcClass, "xtraLang")
     pc.genre = genreStr
     savePC(pc)
     return pc
-    
-    
-    
-    
-    
-    
-    
-            
-            
-    
+
+def setCurrentHP(hpNew):
+    pc = session.get("pc")
+    pc.currentHP = hpNew
+    savePC(pc)
+    return None
 
 
 
-
-
-
-    
+def arrayOfDictionariesWithNames(names, dataArray):
+    newArray = []
+    for name in names:
+        newArray.append(dictionaryWithNameFromArray(name, dataArray))
+    return newArray

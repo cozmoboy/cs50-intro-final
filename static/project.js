@@ -2,6 +2,8 @@ const dieFaces = ["\u{2680}", "\u{2681}", "\u{2682}", "\u{2683}", "\u{2684}", "\
 
 const dieImages = ["/static/dice/d1.png", "/static/dice/d2.png", "/static/dice/d3.png", "/static/dice/d4.png", "/static/dice/d5.png", "/static/dice/d6.png"];
 
+const dieImagesR = ["/static/dice/d1R.png", "/static/dice/d2R.png", "/static/dice/d3R.png", "/static/dice/d4R.png", "/static/dice/d5R.png", "/static/dice/d6R.png"];
+
 const delay = async(ms = 1000) => new Promise(resolve => setTimeout(resolve, ms))
 
 function removeOverlayMenu() {
@@ -9,67 +11,6 @@ function removeOverlayMenu() {
     //saveCharacter;
     //displayCharacter();
 }
-
-function popoverRollBones() {
-
-    removeOverlayMenu();
-
-    var popoverView = document.createElement("p");
-    // popoverView.className = "overlayElement translucent";
-    popoverView.id = "overlay";
-
-    var playersRoll = rollNumberAndSides(2, 6);
-    var modsTotal = 0;
-
-    var contentDiv = document.createElement("p");
-    contentDiv.className = "overlayTextElement";
-
-
-    //contentDiv.innerHTML = "The applicable skills: <strong>" + JSON.stringify(applicableSkills) + "</strong></br>" + "die roll = " + rollNumberAndSides(2, 6);
-    contentDiv.innerHTML = "You have rolled 2d6!</br></br>"
-
-    var rollP = document.createElement("p");
-    rollP.innerHTML = "2d6 Total:    " + playersRoll + "</br>" + attToTest + " value:    " + attValueToTest;
-    contentDiv.appendChild(rollP);
-
-    if (applicableSkills.length > 0) {
-        for (let index = 0; index < applicableSkills.length; index++) {
-            const element = applicableSkills[index];
-            if (element["bonus"] !== "none") {
-                var modP = document.createElement("p");
-                modP.innerHTML = element["skill"] + " adds:    " + element["bonus"];
-                modsTotal = modsTotal + element["bonus"];
-                contentDiv.appendChild(modP);
-
-
-            }
-
-
-        }
-
-    } else {
-
-    }
-
-    var finalRollP = document.createElement("p");
-    var finalRoll = playersRoll + modsTotal + attValueToTest;
-    finalRollP.innerHTML = "<strong>FINAL ROLL:    " + finalRoll + "</strong>";
-    contentDiv.appendChild(finalRollP);
-
-
-    var cancelButton = document.createElement("button");
-    cancelButton.className = "skillButton";
-    cancelButton.innerHTML = "DISMISS";
-    cancelButton.onclick = function() { removeOverlayMenu() };
-
-    popoverView.appendChild(contentDiv);
-    popoverView.appendChild(cancelButton);
-
-    document.getElementById("container").appendChild(popoverView);
-
-
-}
-
 
 function popoverDice(attStr, myVal) {
 
@@ -140,7 +81,8 @@ function popoverDice(attStr, myVal) {
     dangerDieDiv.style.color = "red";
     dangerDieDiv.id = "dangerDie";
     //dangerDieDiv.innerHTML = "\u{2680}";
-    dangerDieDiv.innerHTML = "<img src=\"/static/dice/d1.png\"style=\"width:50px; margin: 10px; filter: invert(100%) saturate(1000%);\"/>";
+    // dangerDieDiv.innerHTML = "<img src=\"/static/dice/d1.png\"style=\"width:50px; margin: 10px; filter: invert(100%) saturate(1000%);\"/>";
+    dangerDieDiv.innerHTML = "<img src=\"/static/dice/d1R.png\"style=\"width:50px; margin: 10px\"/>";
 
 
     var dangerButtonDiv = document.createElement("div");
@@ -214,12 +156,17 @@ function rollDice(dnum, myElementID) {
 
     // DICE IMAGES
     for (let i = 0; i < dnum; i++) {
-        diceString = diceString + "<img src=" + dieImages[Math.floor(Math.random() * dieImages.length)] + " style=\"width:50px; margin: 10px";
 
+        diceArray = dieImages;
         if (myElementID == "dangerDie") {
-            // diceString = diceString + "; filter: brightness(0.5) sepia(1) saturate(10000%);"
-            diceString = diceString + "; filter: invert(100%) saturate(1000%);"
+            diceArray = dieImagesR;
         }
+
+        diceString = diceString + "<img src=" + diceArray[Math.floor(Math.random() * diceArray.length)] + " style=\"width:50px; margin: 10px";
+
+        // if (myElementID == "dangerDie") {
+        //     diceString = diceString + "; filter: invert(100%) saturate(1000%);"
+        // }
 
         diceString = diceString + "\"/>"
     }

@@ -1,4 +1,3 @@
-
 WEAPONTYPESfantasy = ["Swords", "Axes", "Bows", "Staffs",
                "Bludgeons", "Daggers"]
 

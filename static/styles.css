@@ -1,3 +1,13 @@
+@font-face {
+    font-family: wickedGrit;
+    /*font-family: IM Fell DW Pica SC,georgia,rockwell,didot,bookman old style,courier,arial,helvetica;*/
+    font-style: normal;
+    font-weight: 400;
+    src: url("/static/fonts/WickedGrit.ttf");
+    /*local('IM FELL DW Pica SC'), local('IM_FELL_DW_Pica_SC');, url(https://fonts.gstatic.com/s/imfelldwpicasc/v9/0ybjGCAu5PfqkvtGVU15aBhXz3EUrnTm_xKNM0uRGQ.woff) format('woff');*/
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 .bngNavbar {
     background-color: rgb(155, 155, 155);
     color: black;
@@ -88,7 +98,7 @@ td {
     border-radius: 15px;
     border: solid black 3px;
     margin: 4px;
-    width: 100%;
+    width: 50%;
 }
 
 .specButton {
@@ -98,4 +108,57 @@ td {
     border: solid black 3px;
     margin: 4px;
     width: 100%;
+}
+
+.specDiv {
+    border: solid black 1px;
+    padding: 5px;
+    width: 50%;
+    left: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3px;
+}
+
+.specTitle {
+    font-family: WickedGrit;
+}
+
+.nameDiv {
+    border: solid black 3px;
+    color: darkred;
+    padding: 5px;
+    width: 50%;
+    left: 50%;
+    margin: auto;
+    font-family: WickedGrit;
+    font-size: larger;
+}
+
+.statButton {
+    background-color: blue;
+    color: white;
+    border-radius: 15px;
+    border: solid black 3px;
+    margin: 4px;
+    /* width: 10%; */
+    font-family: WickedGrit;
+}
+
+.toTest {
+    font-size: x-small
+}
+
+.hpDiv {
+    /* background-color: blue;
+    color: white;
+    border-radius: 15px; */
+    border: solid black 1px;
+    padding: 5px;
+    width: 20%;
+    /* left: 50%; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3px;
+    font-family: WickedGrit;
 }

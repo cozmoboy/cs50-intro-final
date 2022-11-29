@@ -1,0 +1,156 @@
+name,level,description
+Air Diver,5,Target can swim through the air.
+Amputate,3,"Any of the caster's body parts may be de-tached and reattached at will, without causing pain or damage. Caster can still control them."
+Animate Dead,7,L skeletons rise from the ground to serve the caster. Very stupid and can only obey simple orders.
+Animate Object,3,An object becomes flexible and obeys the caster's commands as best it can.
+Army,3,Caster gains up to L extra arms.
+Arrow,1,"Caster shoots L magic arrows, each doing 1d6 damage. Specify targets."
+Babble,5,Caster can understand all languages.
+Beast Form,3,Target and possessions transform into any common animal.
+Bigger,1,"Targeted creature doubles in size, and does double damage."
+Bind,6,Paralyses 1d6 targets within 10m of the caster.
+Bloodhound,1,"Caster's sense of smell becomes heightened, comparable to that of a dog."
+Body Swap,5,"Caster switches bodies with touched creature or character. If one dies, the other dies as well."
+Bramble,4,Targeted area up to 100m in diameter is suddenly overgrown with impassable vegetation.
+Calm,2,Target is relieved of fear.
+Charm,5,L creatures treat caster like a friend.
+Cloak,6,L creatures become invisible until they move or the spell ends.
+Cold Blast,4,Caster shoots a freezing cloud from hands. Any creature in front of caster within 10m takes Lx1d6 damage. All liquid is frozen.
+Command,5,"Target creature obeys one single, three-word command that will not cause self-harm."
+Conflagration,10,Enormous explosion of flame consumes a targeted area 15m in diameter. Anything in the area takes 6d6 fire damage.
+Confuse,3,L creatures of caster's choice become highly confused and cannot figure out what is going on.
+Control Weather,5,"The caster may change the type of weather, but does not otherwise control it."
+Counterspell,6,"Make and opposed INT check against the caster of a nearby spell. On success, caster may cancel the spell. Counterspell may be used on out of turn as a reaction, or against an ongoing magical effect."
+Cure Disease,4,Removes all diseases from target.
+Cure Light Wounds,1,Targeted creature is healed 1d6 HP.
+Cure Poison,3,Cures target of all poisonings.
+Cure Serious Wounds,4,Targeted creature is healed 3d6 HP.
+Darkness,2,"Targeted point is surrounded by a magical darkness with a radius of 20m. Nothing will light it, and no vision can see through it."
+Darkvision,3,Caster can see in total non-magical darkness.
+Deafen,3,All creatures in a 10m radius of the caster become temorarily deaf.
+Describble,1,Caster can read any writing.
+Detect Evil,1,"Caster can sense evil in a creature, or the presence of unseen evil within 20m."
+Detect Foes,2,"All enemies, even invisible ones, glow a green that can be seen through walls."
+Detect Magic,2,Magical items and effects emit a glow that the caster can see.
+Disenchant,10,Targeted item is permanently stripped of all magic and magical effects.
+Disguise,3,"Caster may change the looks of L characters, so long as they remain humanoid in appearance. Any attempt to look like a specific individual is easily detected by anyone knowing them."
+Disintegrate,12,Instantly reduces target to dust.
+Dispel,5,Dispels L targeted summoned creatures.
+Dispel Magic,3,Ends the effect of one caster's spell. Does not affect magically enchanted items.
+Displace,2,An object appears to be up to Lx10' from its actual position.
+Door,3,Causes a door-sized opening to appear in targeted wall up to 3m thick.
+Dopplegang,3,Target person transforms into a perfect duplicate of a touched individual.
+Earify,1,Greatly amplifies caster's hearing.
+Earthquake,10,The ground for 100m around the caster shakes violently. Structures may be damaged or collapse.
+Elemental Servant,5,Summons an elemental of specified type to do caster's bidding.
+Enchant Weapon,3,Targeted weapon grants advantage to attacks.
+Ethereal Tunnel,7,"Must be cast on an object ahead of time. When cast again, the spell opens twin doors connected through the ethereal plane: one at caster's location, the other at the location where the object was left."
+Eye of the Sorcerer,1,Caster can see through a magical eyeball that flies around at their command.
+Fear,3,"L nearby targeted enemies must make a PRE check. If they fail, they flee in terror."
+Feather Fall,1,Target will float gently to the ground rather than plummet.
+Feeblemind,4,Target is reduced to animal intelligence.
+Find Traps,3,Causes all nearby traps to glow a blue light.
+Fireball,5,"Shoots ranged ball of fire, 3m in diameter. 3d6 damage to anyone in the area."
+Flame,2,Flames shoot from caster's hands. All targets in nearby arc take 1d6 damage.
+Fly,3,Caster can fly at normal walking speed.
+Fog,2,A dense fog spreads out from the caster.
+Freeze,1,"Ice spreads out from caster's touch, up to L.10ftin radius."
+Freeze Time,10,Time stops for everything except the caster within a 100m radius.
+Frenzy,5,"L targeted creatures become violently frenzied, and will attack the person or creature nearest to them."
+Great Warding,10,Target is impervious to all enemy magic.
+Greed,5,L targeted creatures are siezed by an overwhelming urge to possess a visible item of the caster's choice.
+Haste,1,Caster's walk and run speed is tripled.
+Hole,1,A hole appears at target with a diameter of up to Lx1m and up to Lx2m deep.
+House of Mirrors,3,Up to L illusory duplicates of the caster appear and are under their control.
+Hover,3,Target object hovers frictionless 1m above the ground. It will support up to Lxhumanoids weight.
+Humanimal,4,Target animal gians either human intelligence or human appearance for up to L hours.
+Illusion,2,"A silent, immobile, illusion of your choice appears, up to the size of a bedroom."
+Illusory Clone,4,L illusions of the caster appear. Each vanishes if attacked.
+Invisibility,4,Targeted creature becomes invisible until spell ends or it attacks.
+Knock,3,Unlocks one common or magical lock on touch.
+Lay Waste,12,2d6 targeted creatures within a 10m radius of the caster immediately die.
+Leap,1,Caster can leap Lx10' horizontally or vertically.
+Levitate,2,Caster can float strait up or straight down.
+Light,1,Targeted object casts a soft light.
+Lightning,3,Caster shoots a lightning bolt. 2d6 damage.
+Luminesce,3,Touched object permanently radiates a bright light.
+Malice,6,L targeted creatures suddenly hate another targeted creature or group and wish to destroy them.
+Manse,8,"A sturdy, furnished cottage appears for 24 hours. Caster may permit and forbit entry at will."
+Massive Gravity,3,The gravity is tripled in a 10m radius around the caster.
+Mirrorway,8,Targeted mirror becomes a door to another mirror that the caster looked into during the past 24 hours.
+Monstrosity,5,"An object grows to the size of an elephant. If it is an animal, it is enraged."
+Muddify,4,"Targeted stone area is turned to mud, up to 1,000 cubic feet."
+Nounify,2,Caster transforms into any inanimate object between the sizes of an apple and a grand piano.
+Ooze,1,Caster can ooze like an amoeba.
+Pacify,5,L targeted creatures are suddenly calm and want no part of violence.
+Paralyze,3,Targeted creature is paralyzed.
+Petrify,8,Targeted creature is permanently turned to stone.
+Phantasm,5,"Caster creates a controllable illusion. Any creature failing a PRE check believes it is real, and may be injured by it as if it were."
+Phantom Lantern,1,A floating light source. Moves wherever the caster wants.
+Phobia,5,L targeted creatures become terrified of targeted object.
+Pilfer,3,Teleports a visible item to caster's hand.
+Plant Master,5,Nearby plants and trees gain the ability to move 2m per round and will obey the caster.
+Polymorph,6,Target is transformed into an object of the caster's choice.
+Possess Undead,10,Take control of L undead creatures nearby.
+Provision,4,Creates enough food and drink to sustain 6 creatures for one day.
+Pull,1,Visible arget object of any size is pulled toward the caster  with the strength of L men for one round.
+Puppet,3,Caster totally controls target's speech.
+Purify Food & Drink,1,Removes all toxins from nearby food and drink.
+Push,1,Target object of any size is pushed away from the caster  with the strenght of L men for one round.
+Raise Corpse,10,Dead Target rises as an undead being under contol of the caster with HP matching those while alive.
+Read Mind,3,Caster can hear the surface thoughts of target individual.
+Reginald,2,"A man in yellow clothing appears until end of spell. He will obey polite, safe requests."
+Repel,2,Two objects become strongly repelled by one another and cannot come closer than 10'.
+Resist Cold,1,Caster may ignore the effects of cold.
+Resist Fire,2,Caster may ignore the effects of fire.
+Restore Sanity,5,Return a character's mental health to its normal state.
+Resurrect,1,Return life to a corpse. Rises with 1 HP. Useable up to one week after death.
+Rose Binding,2,Rose bushes spring from the ground to hold target. 1d6 thorn damage per turn. STR check to break free.
+Scry,3,The GM will answer up to L yes/no questions about a touched object.
+Sculpt,4,"Targeted stone, wood, or metal object or area can be sculpted by the caster as if it were made of clay."
+Seal,2,Magically seals a door or item to everyone except caster. Does not prevent the object from being broken.
+SŽance,8,"A dead body will respond to L questions, in short, simple answers of no more than 5 words each."
+Shell,4,Caster is impervious to conventional ranged attacks.
+Shield,1,Caster gains 2 Armor Points.
+Shrink,5,Caster and L touched creatures are shrunk to the size of a mouse.
+Shuffle,5,"L+1 nearby creatures instantly switch places, who and where to be determined randomly."
+Silence,1,Completely muffles all noise within 100m of caster.
+Sleep,6,L creatures instantly fall into a light sleep.
+Sorcerer's Ward,7,Targeted creature is immune to magical spells up to power level 5.
+Spectral Coach,3,"A spectral carriage appears. It will carry up to 6 humanoids for up to 3 hours. Carriage moves unnaturally quickly over all terrains, including water."
+Spider,1,Caster can climb surfaces like a spider.
+Spring,1,A spring of fresh water appears.
+Sticky,1,Target becomes extremely sticky.
+Stone to Flesh,8,Returns a pertrified creature to its original state.
+Storm,10,6d6 lightning damage each to L targets.
+Stretch,3,"Caster's arms, legs, and neck can stretch up to L x meters."
+Suffer,5,Target is incapacitated by pain.
+Summon Aberration,15,Summon a randomly generated Major Xenoplanar Horror (see Bestiary section). The xenoplanar is not under the spell caster's control.
+Summon Horror,5,Summon a randomly generated Xenoplanar Horror Minion (see Bestiary section). The aberration is not under the spell caster's control.
+Swarm,3,Summons a swarm of flying insects under caster's control. Will blind and confuse target.
+Telekinesis,3,"Caster may move items with their mind, up to weight of Lx10lbs."
+Telepathy,3,L+1 targeted individuals can hear one another's thoughts over any distance.
+Teleport,6,"Instantly teleports caster to a spot they can see, or a spot that is out of sight but very well known to them."
+Teleport,6,Targeted object is instantly teleported from one spot to another spot on the ground up to Lx10m away.
+Terraform,8,Caster may shape the terrain around them in a 100m radius.
+Tether,2,Two objects become attached with an invisible cord and cannot be moved more than 10' appart.
+Thicket,5,A thicket of trees and dense brush up to 15m wide instantly sprouts up around targeted spot.
+Throw Voice,1,Caster can cause their voice to emanate from a spot up to 20m away.
+Transparency,3,Caster can see through solid matter.
+True Sight,3,Caster sees through all nearby illusions.
+Truth,3,Target creature will go into a trance and truthfully answer L yes/no questions.
+Uncurse,4,Removes one curse from one target.
+Ventriloquism,1,Creates a sound illusion that comes from targeted spot.
+Voyeur,4,Caster can see through the eyes of a creature they touched up to 12 hours earlier.
+Wall of Iron,5,A wall of iron appears in targeted spot. It is up to 20m long and 10m high.
+Wall of Ouch,5,"A wall of fire, ice, thorns, or wind rises from the chosen ground, 15m long and 4m high. 2d6 damage per round inside the wall."
+Ward,5,"A silver circle 10m in diameter appears around targeted spot. Choose one thing that cannot enter or leave it: living creatures, dead creatures, projectiles, or metal."
+Water Breathing,3,Caster can breathe underwater.
+Water Way,7,Water up to 20m deep will part in a 3m radius circle around the caster.
+Web,3,Caster's chosen body part can shoot thick webbing.
+Wholeness,10,"Complete healing of one creature. Damage, disease, poison."
+Wind Walk,10,Caster and 1 targeted creature turn to mist and can fly swiftly.
+Wisp,1,Caster's body becomes living smoke.
+Wizard Mark,1,"Caster's finger can spray a dayglow paint. It is visible only to the caster, and can be seen through solid objects and at any distance."
+Word of Recall,12,Caster and nearby allies instantly teleport to a previously prepared location any distance away. Preparing a location involves casting Word of Recall on it ahead of time. Transport occurs from anywhere the spell is cast again.
+Word of Virtue,15,2d6 targeted creatures are affected within 30m. Creatures with fewer HPs than caster's maximum die instantly. Creatures with more HPs than caster's max are paralyzed.

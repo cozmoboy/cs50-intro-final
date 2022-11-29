@@ -7,14 +7,18 @@
 {% block main %}
 
    {% if pc %}
-   
-      Name: {{ pc["name"]}}</br>
-      <button id="strB">STR: {{ pc["strength"]}}</button>
-      <button id="dexB">DEX: {{ pc["dexterity"]}}</button>
-      <button id="intB">INT: {{ pc["intel"]}}</button>
-      <button id="preB">PRE: {{ pc["presence"]}}</button>
+
+      <div class="nameDiv">
+      {{ pc["name"]}}</br>
+      </div>
+      <button class="statButton" id="strB">STR: {{ pc["strength"]}}</br><p class="toTest">click to test</p></button>
+      <button class="statButton" id="dexB">DEX: {{ pc["dexterity"]}}</br><p class="toTest">click to test</p></button>
+      <button class="statButton" id="intB">INT: {{ pc["intel"]}}</br><p class="toTest">click to test</p></button>
+      <button class="statButton" id="preB">PRE: {{ pc["presence"]}}</br><p class="toTest">click to test</p></button>
 
       <script>
+         var localCurrentHP = {{ pc["currentHP"]}};
+
          const strB = document.getElementById("strB");
          const dexB = document.getElementById("dexB");
          const intB = document.getElementById("intB");
@@ -28,6 +32,26 @@
 
          preB.addEventListener('click', function(){ popoverDice("PRE", {{ pc["presence"]}}) }, false);
 
+         function setCurrentHP(newHP) {
+            localCurrentHP = newHP;
+            document.getElementById("currentHPspan").innerHTML = "Current HP: " + localCurrentHP;
+            document.getElementById("currentHPspan").value = newHP;
+         }
+
+         function addOneToHP() {
+            if  (localCurrentHP < {{ pc["hp"]}}) {
+               setCurrentHP(localCurrentHP + 1);
+            }
+               
+         }
+
+         function subtractOneFromHP() {
+            if  (localCurrentHP > 0) {
+               setCurrentHP(localCurrentHP - 1);
+            }
+               
+         }
+
       </script>
 
             
@@ -35,15 +59,36 @@
          SAN: {{ pc["sanity"] }}
       {% endif %}</br></br>
 
+
       Class: {{ pc["cClass"]}}</br></br>
-      Hp: {{ pc["hp"]}}   Current Health: {{ pc["currentHP"]}}</br></br>
-      
+      <div>
+         <div class="hpDiv">
+            HP Max: {{ pc["hp"]}} 
+         </div>  
+         <div class="hpDiv">
+            <span id="currentHPspan">Current HP: {{ pc["currentHP"]}}</span></br>
+            <form action="/updateHP">
+               <input name="currentHPInput" type="hidden" value={{ pc["currentHP"]}}>
+               <button type="submit" onclick="addOneToHP()">+</button>
+               <button type="submit" onclick="subtractOneFromHP()">-</button>
+            </form>
+         </div>
+      </div>
+   </br></br>
       {% if pc["specials"] is defined and pc["specials"]|length > 0 %}
-      Specials: {{ pc["specials"]|join(', ') }}</br>
-      {% for special in pc["specials"] %}
-      <button class="specButton"> {{ special }} </button></br>
-      {% endfor %}
-   </br></br></br>
+
+         {% for special in pc["specials"] %}
+
+            
+            <div class="specDiv">
+               <div class="specTitle">{{ special["name"] }}</div>
+               {{ special["description" ]}}
+            </div>
+            
+            </br>
+
+          {% endfor %}
+            </br>
       {% endif %}
       
       {% if pc["weaponPro"] is defined and pc["weaponPro"]|length > 0 %}

@@ -1,23 +1,23 @@
 Users should be able to:
 
-make a character
+- make a character
     fantasy
     western
 
-Read the Rules
+- Read the Rules
 
-Roll Dice
+- Roll Dice
 
-Edit their Stuff
+- Edit their Stuff
 
-Change their HP
+- Change their HP
 
-GM should be able to choose baddies for a fight
+- GM should be able to choose baddies for a fight
 
-See Bestiary
+X - See Bestiary
 
-track baddie's HP
+- track baddie's HP
 
-Roll Dice
+X - Roll Dice
 
-Choose Map?
+buttons on the bestiary nav to filter baddies by genre
