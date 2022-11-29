@@ -33,9 +33,9 @@
          preB.addEventListener('click', function(){ popoverDice("PRE", {{ pc["presence"]}}) }, false);
 
          function setCurrentHP(newHP) {
+            document.getElementById("currentHPspan").value = newHP;
             localCurrentHP = newHP;
             document.getElementById("currentHPspan").innerHTML = "Current HP: " + localCurrentHP;
-            document.getElementById("currentHPspan").value = newHP;
          }
 
          function addOneToHP() {
@@ -67,11 +67,8 @@
          </div>  
          <div class="hpDiv">
             <span id="currentHPspan">Current HP: {{ pc["currentHP"]}}</span></br>
-            <form action="/updateHP">
-               <input name="currentHPInput" type="hidden" value={{ pc["currentHP"]}}>
-               <button type="submit" onclick="addOneToHP()">+</button>
-               <button type="submit" onclick="subtractOneFromHP()">-</button>
-            </form>
+            <button onclick="addOneToHP()">+</button>
+            <button onclick="subtractOneFromHP()">-</button>
          </div>
       </div>
    </br></br>

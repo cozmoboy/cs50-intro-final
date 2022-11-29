@@ -13,7 +13,7 @@ from cs50 import SQL
 # import datetime
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
-from helpers import dictionaryWithNameFromArray, makePCofClass
+from helpers import dictionaryWithNameFromArray, makePCofClass, setCurrentHP
 
 # Configure application
 app = Flask(__name__)
@@ -68,36 +68,25 @@ def pcMain():
 
         cClass = request.form.get("class")
         genre = request.form.get("genre")
+        
+        pc = makePCofClass(cClass, genre)
+        return render_template("/pcMain.html", pc=pc)
 
-        print("Genre: " + genre, flush=True)
-        print("Class: " + cClass, flush=True)
+        # if session.get("pc"):
+        #     print('EXISTING pc', flush=True)
+        #     pc = session.get("pc")
+        #     return render_template("/pcMain.html", pc=pc)
+        # else:
+        #     print('NEW pc', flush=True)
+        #     pc = makePCofClass(cClass, genre)
+        #     return render_template("/pcMain.html", pc=pc)
 
-        print('inside pcMain POST', flush=True)
-        if session.get("pc"):
-            # pc = session.get("pc")
-            print('EXISTING pc', flush=True)
-            # print(pc, flush=True)
-            # return render_template("/pcMain.html", pc = pc)
-
-            pc = session.get("pc"):
-            return render_template("/pcMain.html", pc=pc)
-
-        else:
-            # pc = classes.PC()
-            # helpers.savePC(pc);
-            print('NEW pc', flush=True)
-            # print(pc, flush=True)
-            # return render_template("/pcMain.html", pc = pc)
-
-            pc = makePCofClass("Fighter", "fantasy")
-            return render_template("/pcMain.html", pc=pc)
-
-    # if session.get("pc"):
-    #     pc = session.get("pc")
-    # else:
-    #     pc = classes.PC()
-    print('inside pcMain GET', flush=True)
-    return render_template("/pcMain.html")
+    if session.get("pc"):
+        print('EXISTING pc', flush=True)
+        pc = session.get("pc")
+        return render_template("/pcMain.html", pc=pc)
+    
+    return render_template("/pcMain.html", pc=pc)
 
 
 # -----------------  LOGOUT   ---------------------------
@@ -181,6 +170,12 @@ def besiary():
         myBestiary = bestiaryAll.BESTIARY
         return render_template("/bestiary.html", bestiary=myBestiary)
     
-@app.route("/updateHP", ethods=["GET", "POST"])
+@app.route("/updateHP", methods=["GET", "POST"])
 def updateHP():
+    newHP = request.form.get("currentHPInput")
+    setCurrentHP(newHP)
+    print('changing current HP: ', flush=True)
+    print(newHP, flush=True)
+    return redirect("pcMain")
+    
     
