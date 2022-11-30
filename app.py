@@ -179,3 +179,10 @@ def updateHP():
     return redirect("pcMain")
     
     
+@app.route("/rules", methods=["GET", "POST"])
+def rules():
+    if request.method == "POST":
+        return render_template("/rules.html")
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("/rules.html")

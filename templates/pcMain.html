@@ -9,9 +9,14 @@
    {% if pc %}
 
       <div class="nameDiv">
-      {{ pc["name"]}}</br>
+      {{ pc["name"]}}
       </div>
-      <div class="classDiv">Class: {{ pc["cClass"]}}</div>
+      <div class="classDiv">Class: {{ pc["cClass"]}}</br>
+         {% if pc["notes"] is defined and pc["notes"]|length > 0%}
+         {% for note in pc["notes"] %}
+            <span class="note">{{ note }}</span>
+         {% endfor %}
+         {% endif %}</div>
       <button class="statButton" id="strB">STR: {{ pc["strength"]}}</br><p class="toTest">click to test</p></button>
       <button class="statButton" id="dexB">DEX: {{ pc["dexterity"]}}</br><p class="toTest">click to test</p></button>
       <button class="statButton" id="intB">INT: {{ pc["intel"]}}</br><p class="toTest">click to test</p></button>
@@ -54,8 +59,6 @@
                
          }
 
-
-
          function setMoney(newMoney) {
             localMoney = newMoney;
             document.getElementById("moneySpan").innerHTML = localMoney;
@@ -66,6 +69,16 @@
                setMoney(localMoney + amount);
             }
          }
+
+         function removeItem(id) {
+            var myList = document.getElementById("itemsList")
+            var elem = document.getElementById(id);
+            elem.parentNode.removeChild(elem);
+            console.log("removing item");
+            console.log(id);
+         }
+
+
 
       </script>
 
@@ -102,21 +115,19 @@
       {% if pc["spells"] is defined and pc["spells"]|length > 0 %}
          <span class="catagoryTitle">Spells</span></br>
          {% for spell in pc["spells"] %}
-
-            
             <div class="specDiv">
-               <div class="specTitle">{{ spell["name"] }}</div>
+               <div class="specTitle">{{ spell["name"] }}    <span class="level">level {{ spell["level"] }}</span></div>
                {{ spell["description" ]}}
             </div>
-
           {% endfor %}
             </br>
       {% endif %}
       
+      <span class="catagoryTitle">Miscellany</span></br>
       {% if pc["weaponPro"] is defined and pc["weaponPro"]|length > 0 %}
          <div class="specDiv">
             <div class="specTitle">Weapon Proficiency</div>
-            {{ pc["weaponPro"]|join(' ') }}</br>
+            {{ pc["weaponPro"]|join(', ') }}</br>
          </div>
 
       {% endif %}
@@ -124,14 +135,14 @@
       {% if pc["weaponMast"] is defined and pc["weaponMast"]|length > 0 %}
          <div class="specDiv">
             <div class="specTitle">Weapon Masteries</div>
-            {{ pc["weaponMast"]|join(' ') }}</br>
+            {{ pc["weaponMast"]|join(', ') }}</br>
          </div>
       {% endif %}
 
       {% if pc["armorPro"] is defined and pc["armorPro"]|length > 0 %}
          <div class="specDiv">
          <div class="specTitle">Armor Proficiency</div>
-         {{ pc["armorPro"]|join(' ') }}</br>
+         {{ pc["armorPro"]|join(', ') }}</br>
          </div>
       {% endif %}
 
@@ -145,19 +156,24 @@
       <div class="specDiv">
          <div class="specTitle">Money</div>
          <span id="moneySpan">{{ pc["money"]}}</span></br>
-         <button onclick="addToMoney(-10)">-10</button>
-         <button onclick="addToMoney(-1)">-1</button>
-         <button onclick="addToMoney(1)">+1</button>
          <button onclick="addToMoney(10)">+10</button>
+         <button onclick="addToMoney(1)">+1</button>
+         <button onclick="addToMoney(-1)">-1</button>
+         <button onclick="addToMoney(-10)">-10</button>
       </div>
       </br>
 
       {% if pc["inventory"] is defined and pc["inventory"]|length > 0 %}
+         <span class="catagoryTitle">Inventory</span></br>
          <div class="specDiv">
-         <div class="specTitle">Inventory</div>
-         {% for item in pc["inventory"] %}
-         <p class="itemP"> {{ item }} </p>
-         {% endfor %}
+            <p>
+            <button class="right" onclick="addItemPopover()">add item</button>
+            </p>
+            <ul class="no-bullets" id="itemsList">
+               {% for item in pc["inventory"] %}
+                <li class="itemP" id="{{ item }}"> {{ item }} <button class="removeButton" onclick="removeItem('{{ item }}')">remove</button></li>
+               {% endfor %}
+            </ul>
          </div>
       {% endif %}
 

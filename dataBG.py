@@ -937,6 +937,12 @@ STEALTHSPELLS = [
 
 ]
 
+def allSpellsOfType(listName):
+    allSpells = []
+    for dict in listName:
+        allSpells = allSpells + dict["spells"]
+    return allSpells
+
 
 PROFESSIONS = ["Accountant", "Actor", "Anthropologist", "Antiquarian", "Archeologist", "Architect", "Engineer (Specify)", "Explorer", "Farmer", "Federal Agent", "Film Crew", "Firefighter", "Photographer", "Physicist", "Pilot", "Plumber", "Police Detective", "Police Officer", "Artist", "Athlete", "Bail Bondsman", "Bank Robber", "Banker", "Bartender", "Forensics", "Forester/Ranger", "Gambler", "Gangster", "Gardener", "Hired Muscle", "Politician", "Prison Guard", "Private Detective", "Professor", "Programmer/Coder", "Psychiatrist", "Biologist", "Bookstore Owner", "Bounty Hunter", "Burglar", "Butler/Maid", "Cab Driver", "Hit Man", "Journalist", "Judge", "Laborer/Factory Worker", "Lawyer", "Librarian", "Psychologist", "Race Car Driver", "Researcher", "Restaurateur",
                "Retail Clerk", "Roadie/Stagehand", "Carpenter", "Cartographer", "Chef", "Chemist", "Clergy", "Con Man", "Loan Shark", "Locksmith", "Lumberjack", "Machinist", "Management", "Mathematician", "Safecracker", "Sailor", "Salesman", "Secretary", "Security Guard", "Singer", "Construction", "Corporate", "Cowboy", "Cryptographer", "Designer", "Dilettante", "Mayor", "Mechanic", "Merchant", "Military Officer", "Miner", "Museum Curator", "Smuggler", "Soldier", "Sports Coach", "Stockbroker", "Student", "Stunt Man", "Diplomat", "Doctor/Dentist", "Drifter", "Driver", "Educator", "Electrician", "Musician", "Nurse", "Parapsychologist", "Park Ranger", "Pharmacist", "Phone Operator", "Surveyor", "Talent Agent", "Telemarketer", "Undertaker", "Writer", "Zookeeper"]
@@ -1091,7 +1097,7 @@ CLASSES = [
         "weaponPros": {"choose": True, "number": 2, "list": WEAPONTYPESfantasy},
         "weaponMasteries": {"choose": False, "number": 0, "list": []},
         "specials": ["Stealthy", "Locksmith", "Detect Traps", "Disarm Traps", "Backstabber", "Heightened Balance", "Climber", "Disguise", "Pick Pocket", "Unsavory Contacts", "Read Languages"],
-        "specialsXtra": {"choose": False, "number": 0, "list": ["Pilot", "Pickpocket"]},
+        "specialsXtra": {"choose": False, "number": 0, "list": []},
         "foci": {"choose": False, "number": 0, "list": []},
         "paths": {"choose": False, "number": 0, "list": []},
         "resources": {"choose": False, "number": 0, "list": []},
@@ -1119,7 +1125,7 @@ CLASSES = [
         "xtraGear": ["Spell Book"],
         "notes": [],
         "startCash": 0.0,
-        "spells": {"choose": True, "number": 4, "list": ARCANESPELLS},
+        "spells": {"choose": True, "number": 4, "list": allSpellsOfType(ARCANESPELLS)},
         "xtraLang": {"choose": False, "number": 0, "list": []}
     },
 
@@ -1140,7 +1146,7 @@ CLASSES = [
         "xtraGear": [],
         "notes": ["To successfully cast a spell, a paladin must make a PRE check instead of an INT check.", "If a paladin shows a pattern of unvirtuous behaviour, they lose their paladin status and revert to the fighter class."],
         "startCash": 0.0,
-        "spells": {"choose": True, "number": 2, "list": VIRTURESPELLS},
+        "spells": {"choose": True, "number": 2, "list": allSpellsOfType(VIRTURESPELLS)},
         "xtraLang": {"choose": False, "number": 0, "list": []},
     },
 
@@ -1151,9 +1157,9 @@ CLASSES = [
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Medium"],
         "armor": ["Light"],
-        "weaponPros": {"choose": False, "number": 1, "list": ["Swords", "Axes", "Bows", "Staffs",
+        "weaponPros": {"choose": True, "number": 1, "list": ["Swords", "Axes", "Bows", "Staffs",
                "Bludgeons", "Daggers"]},
-        "weaponMasteries": {"choose": False, "number": 1, "list": ["Staffs"]},
+        "weaponMasteries": {"choose": True, "number": 1, "list": ["Staffs"]},
         "specials": ["Shapeshift - Animal", "Animal Familiar", "Survival", "Nature Magic"],
         "specialsXtra": {"choose": False, "number": 0, "list": []},
         "foci": {"choose": False, "number": 0, "list": []},
@@ -1162,7 +1168,7 @@ CLASSES = [
         "xtraGear": [],
         "notes": [],
         "startCash": 0.0,
-        "spells": {"choose": True, "number": 4, "list": NATURESPELLS},
+        "spells": {"choose": True, "number": 4, "list": allSpellsOfType(NATURESPELLS)},
         "xtraLang": {"choose": False, "number": 0, "list": []},
     },
 
@@ -1173,9 +1179,9 @@ CLASSES = [
         "knacks": {"choose": False, "number": 0, "list": []},
         "weapons": ["Any"],
         "armor": ["Light", "Medium"],
-        "weaponPros": {"choose": False, "number": 1, "list": ["Swords", "Axes", "Staffs",
+        "weaponPros": {"choose": True, "number": 1, "list": ["Swords", "Axes", "Staffs",
                "Bludgeons", "Daggers"]},
-        "weaponMasteries": {"choose": False, "number": 1, "list": ["Bows"]},
+        "weaponMasteries": {"choose": True, "number": 1, "list": ["Bows"]},
         "specials": ["Stealthy", "Survival", "Animal Familiar", "Stealth Magic"],
         "specialsXtra": {"choose": False, "number": 0, "list": []},
         "foci": {"choose": False, "number": 0, "list": []},
@@ -1184,7 +1190,7 @@ CLASSES = [
         "xtraGear": [],
         "notes": [],
         "startCash": 0.0,
-        "spells": {"choose": True, "number": 2, "list": STEALTHSPELLS},
+        "spells": {"choose": True, "number": 2, "list": allSpellsOfType(STEALTHSPELLS)},
         "xtraLang": {"choose": True, "number": 1, "list": ["Orcish", "Goblinoid", "Giant", "Molevan", "Fishfolkese", "Lizardovian", "Gnoll", "Elven", "Dwarvish", "Halfling"]}
     },
 

@@ -15,7 +15,7 @@ function removeOverlayMenu() {
 function popoverDice(attStr, myVal) {
 
     removeOverlayMenu();
-    var container = document.getElementById("container");
+    //var container = document.getElementById("container");
     //container.style.display = "flex";
 
 
@@ -171,10 +171,6 @@ function rollDice(dnum, myElementID) {
         diceString = diceString + "\"/>"
     }
 
-
-
-
-
     document.getElementById(myElementID).innerHTML = diceString;
 }
 
@@ -274,4 +270,67 @@ function rollNumberAndSides(dNumber, dSides) {
 
 function randomElementFromArray(myArray) {
     return myArray[randomNumberBetween(0, myArray.length - 1)];
+}
+
+
+function addItemPopover(attStr, myVal) {
+
+    console.log("add item button pushed.....")
+    removeOverlayMenu();
+    var container = document.getElementById("container");
+
+    var itemInput = document.createElement("input");
+    itemInput.type = "text";
+    itemInput.className = "itemInput";
+    itemInput.id = "itemInput"
+
+    var addButton = document.createElement("button");
+    addButton.innerHTML = "add";
+    addButton.className = "addButton";
+    addButton.onclick = function() { addItemToInventory() }
+
+    var cancelButton = document.createElement("button");
+    cancelButton.innerHTML = "Cancel";
+    cancelButton.className = "diceButton"
+    cancelButton.onclick = function() { removeOverlayMenu() };
+
+
+    // POPOVER VIEW.......................................
+    var popoverView = document.createElement("div");
+    popoverView.className = "overlayElement";
+    popoverView.appendChild(itemInput);
+    popoverView.appendChild(addButton);
+    popoverView.appendChild(cancelButton);
+    // popoverView.appendChild(selectButtonsP);
+    // popoverView.appendChild(attDiv);
+    // popoverView.appendChild(diceDiv);
+    // popoverView.appendChild(dangerDieDiv);
+    // popoverView.appendChild(dangerButtonDiv);
+
+
+
+    document.getElementById("container").appendChild(popoverView);
+
+
+}
+
+function addItemToInventory() {
+    var inputElement = document.getElementById('itemInput')
+    var itemString = inputElement.value;
+    if (itemString != "") {
+        var itemsList = document.getElementById("itemsList");
+        var htmlString = itemString + "<button class='removeButton' onclick=\"removeItem('" + itemString + "')\">remove</button>";
+        var listItem = document.createElement('li');
+        listItem.innerHTML = htmlString;
+
+        itemsList.appendChild(listItem);
+        inputElement.value = ""
+
+
+    }
+
+
+    // {{ item }}      <button class='removeButton' onclick=\"removeItem('       {{ item }}         ')\">remove</button>
+
+
 }

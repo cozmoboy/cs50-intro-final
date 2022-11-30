@@ -24,7 +24,7 @@
 
     <body {% block format %}{% endblock %}>
 
-        <nav class="border navbar navbar-expand-md bngNavbar fixed-top">
+        <nav class="border-bottom border-dark navbar navbar-expand-md fixed-top bngNavbar">
             <div class="container-fluid">
             
 
@@ -36,7 +36,7 @@
 
                 <div class="collapse navbar-collapse" id="navbar">
                         <ul class="navbar-nav me-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/"><img src="../static/HomeButtonSM.png" width="50"></a></li>
+                            <li class="nav-item"><a class="nav-link" href="/rules">Rules</a></li>
                             <li class="nav-item"><a class="nav-link" href="/pcMain">PC Screen</a></li>
                             <li class="nav-item"><a class="nav-link" href="/makePC">Make a PC</a></li>
                             <li class="nav-item"><a class="nav-link" href="/gmMain">GM Screen</a></li>
@@ -45,6 +45,8 @@
 
                 </div>
             </div>
+
+            <div><div class="nav-item right"><a class="nav-link" href="/"><img src="../static/HomeButtonSM.png" width="50"></a></div></div>
         </nav>
 
 
@@ -52,8 +54,10 @@
             {% block main %}{% endblock %}
         </main>
 
-        <footer class="small text-center text-muted fixed-bottom myFooter">
-            fun provided by <a href="https://www.betelnutgames.com">BetelnutGames.com</a>
+        <footer class="border-top border-dark small text-center align-text-bottom text-muted fixed-bottom myFooter pull-right">
+            <div class="bottom">
+            <a href="https://www.betelnutgames.com">BetelnutGames.com</a>
+            </div>
         </footer>
 
     </body>
