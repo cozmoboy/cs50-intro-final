@@ -106,6 +106,53 @@ td {
     color: greenyellow;
 }
 
+.rules {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rulesh1,
+.rulesh2,
+.rulesh3,
+.rulesh4 {
+    padding-top: 20px;
+    font-family: WickedGrit;
+}
+
+.rulesh1 {
+    color: black;
+}
+
+.rulesh2 {
+    color: blue;
+    font-size: x-large;
+}
+
+.rulesh3 {
+    color: green;
+    font-size: large;
+}
+
+.rulesh4 {
+    color: red;
+    font-size: medium;
+}
+
+.rulesp {
+    text-align: justify;
+}
+
+.rulesul {
+    width: 80%;
+    text-align: justify;
+}
+
+.rulesol {
+    width: 80%;
+    text-align: justify;
+}
+
 .fantasy {
     background-color: purple;
     color: gold;
