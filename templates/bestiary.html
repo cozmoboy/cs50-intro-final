@@ -10,8 +10,8 @@
 
 {% block main %}
 Select the number of each monster you want the PCs to battle, then click "Fight!"
-    <form>
-        <button style="margin-top: 10px; margin-bottom: 20px">FIGHT!</button>
+    <form action="/battleGM" method="post">
+        <button style="margin-top: 10px; margin-bottom: 20px" type="submit">FIGHT!</button>
     </br>
         <div class="beastDiv" style="">
             <ul style="list-style-type: none;">
