@@ -14,9 +14,9 @@ Select the number of each monster you want the PCs to battle, then click "Fight!
         <button style="margin-top: 10px; margin-bottom: 20px" type="submit">FIGHT!</button>
     </br>
         <div class="beastDiv" style="">
-            <ul style="list-style-type: none;">
+            <ul name="bestiaryList" id="bestiaryList" style="list-style-type: none;">
                 {% for beast in bestiary %}
-                        <li>
+                        <li name="beastItem">
                             <h3 class="beastTitle">{{ beast.name }}</h3>
 
                             <h5 class="beastStats">STR: <span class="statSpan">{{ beast.STR }}</span>   DEX: <span class="statSpan">{{ beast.DEX }}</span>    INT: <span class="statSpan">{{ beast.INT }}</span>    PRE: <span class="statSpan">{{ beast.INT }}</span> </h5>

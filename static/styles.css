@@ -358,3 +358,15 @@ ul.no-bullets {
 .statSpan {
     color: black;
 }
+
+.enemyDiv {
+    border: black solid 1px;
+}
+
+.alive .foeName {
+    color: darkred;
+}
+
+.dead {
+    color: rgb(143, 140, 140);
+}

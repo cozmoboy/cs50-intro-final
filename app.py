@@ -180,7 +180,7 @@ def updateHP():
     setCurrentHP(newHP)
     print('changing current HP: ', flush=True)
     print(newHP, flush=True)
-    return redirect("pcMain")
+    return redirect("/pcMain.html")
     
     
 @app.route("/rules", methods=["GET", "POST"])
@@ -190,3 +190,38 @@ def rules():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("/rules.html")
+    
+@app.route("/battleGM", methods=["GET", "POST"])
+def battleGM():
+    if request.method == "POST":
+        # enemies = request.args.get("bestiaryList")
+        enemies = request.form.getlist('name')
+        numbers = request.form.getlist('quantity')
+        
+        # print("enemies returned from bestiary........................", flush=True)
+        # print(enemies, flush=True)
+        # print(">>>>>> number of enemies returned from bestiary........................", flush=True)
+        # print(numbers, flush=True)
+        
+        allFoes = []
+        i = 0
+        while i<len(enemies):
+            if numbers[i] != '':
+                
+                myDict = {
+                    "enemy": dictionaryWithNameFromArray(enemies[i], bestiaryAll.BESTIARY),
+                    "number": int(numbers[i])
+                }
+                allFoes.append(myDict)
+                
+            i += 1
+        
+        print(">>>>>> FOES FOR FIGHT ........................", flush=True)
+        print(allFoes, flush=True)
+        
+        return render_template("/battleGM.html", allFoes = allFoes)
+    
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        print("You got there by GET <<<<<<<<<<<<<<<", flush=True)
+        return redirect("/bestiary.html")

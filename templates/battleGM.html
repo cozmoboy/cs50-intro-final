@@ -1,12 +1,54 @@
-% extends "layout.html" %}
+{% extends "layout.html" %}
 
 {% block title %}
     Combat
 {% endblock %}
 
 {% block main %}
-    GM MAIN PLAY SCREEN
-    <form action="/bestiary" method="get">
-        <button class="fantasy" type="submit">Bestiary</button>
-    </form>
+
+    <script>
+        function changeHPby(foeName, amt) {
+            foeElement = document.getElementById(foeName)
+            currentFoeHP = parseInt(document.getElementById(foeName + "HP").innerHTML);
+            newFoeHP = currentFoeHP + amt;
+            foeMax = document.getElementById(foeName + "MAX").value;
+
+            if (newFoeHP >= 0 && newFoeHP <= foeMax ) {
+                document.getElementById(foeName + "HP").innerHTML = newFoeHP;
+
+            }
+
+            if (newFoeHP == 0) {
+                foeElement.classList.remove("alive");
+                foeElement.classList.add("dead");
+            }
+
+            if (newFoeHP > 0) {
+                foeElement.classList.remove("dead");
+                foeElement.classList.add("alive");
+            }
+
+
+        }
+
+    </script>
+
+
+
+    BATTLE STUFF WILL GO HERE.........
+    {% for foe in allFoes %}
+        {% for n in range(foe.number) %}
+        <div class="enemyDiv alive" id="{{ foe.enemy.name }}{{ n + 1 }}">
+            <span class="foeName">{{ foe.enemy.name }}&nbsp;{{ n + 1 }}</span>
+            <div class="foehpDiv">
+                HP: <span id="{{ foe.enemy.name }}{{ n + 1 }}HP">{{ foe.enemy.hp }}</span>
+                <input type="hidden" id="{{ foe.enemy.name }}{{ n + 1 }}MAX" value="{{ foe.enemy.hp }}">
+                <button onclick="changeHPby('{{ foe.enemy.name }}{{ n + 1 }}', 1)">+</button>
+                <button onclick="changeHPby('{{ foe.enemy.name }}{{ n + 1 }}', -1)">-</button>
+             </div>
+        </br>
+            stats: {{ foe.enemy.statBlock }}
+        </div>
+        {% endfor %}
+    {% endfor %}
 {% endblock %}
