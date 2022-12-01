@@ -14,6 +14,7 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from helpers import dictionaryWithNameFromArray, makePCofClass, setCurrentHP
+from operator import itemgetter
 
 # Configure application
 app = Flask(__name__)
@@ -164,11 +165,14 @@ def postApPC():
 def besiary():
     if request.method == "POST":
         myBestiary = bestiaryAll.BESTIARY
-        return render_template("/bestiary.html", bestiary=myBestiary)
+        newlist = sorted(myBestiary, key=lambda d: d['name'])
+        return render_template("/bestiary.html", bestiary=newlist)
 
     else:
         myBestiary = bestiaryAll.BESTIARY
-        return render_template("/bestiary.html", bestiary=myBestiary)
+        # newlist = sorted(myBestiary, key=itemgetter('name')) 
+        newlist = sorted(myBestiary, key=lambda d: d['name'])
+        return render_template("/bestiary.html", bestiary=newlist)
     
 @app.route("/updateHP", methods=["GET", "POST"])
 def updateHP():

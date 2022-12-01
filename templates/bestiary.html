@@ -9,21 +9,32 @@
 {% block xtraButtons %}{% endblock %}
 
 {% block main %}
+Select the number of each monster you want the PCs to battle, then click "Fight!"
     <form>
-        <ul>
-            {% for beast in bestiary %}
-                    <li>
-                        <h3>{{ beast.name }}</h3>
-                        <h5>STR:{{ beast.STR }}   DEX:{{ beast.DEX }}   INT:{{ beast.INT }}   PRE:{{ beast.INT }}</h5>
-                        <h5>HP:{{ beast.hp }}   To Target:{{ beast.toTarget }}   AV:{{ beast.av }}</h5>
-                        <p>{{ beast.description}}</p>
-                        <input type="hidden" id="name" name="name" value="{{ beast.name }}">
-                        <label>number</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="99">
-                        <hr/>
-                    </li>
-            {% endfor %}
-        </ul>
+        <button style="margin-top: 10px; margin-bottom: 20px">FIGHT!</button>
+    </br>
+        <div class="beastDiv" style="">
+            <ul style="list-style-type: none;">
+                {% for beast in bestiary %}
+                        <li>
+                            <h3 class="beastTitle">{{ beast.name }}</h3>
+
+                            <h5 class="beastStats">STR: <span class="statSpan">{{ beast.STR }}</span>   DEX: <span class="statSpan">{{ beast.DEX }}</span>    INT: <span class="statSpan">{{ beast.INT }}</span>    PRE: <span class="statSpan">{{ beast.INT }}</span> </h5>
+
+                            <h5 class="beastStats">HP: <span class="statSpan">{{ beast.hp }}</span>    To-Target: <span class="statSpan">{{ beast.toTarget }}</span>    AV: <span class="statSpan">{{ beast.av }}</span> </h5>
+
+                            <p class="beastDescription">{{ beast.description}}</p>
+                            {% if (beast.specials != "") %}
+                            <p class="beastDescription">Specials: {{ beast.specials}}</p>
+                            {% endif %}
+                            <input type="hidden" id="name" name="name" value="{{ beast.name }}">
+                            <label>number</label>
+                            <input type="number" id="quantity" name="quantity" min=0 max=99 placeholder=0>
+                            <hr/>
+                        </li>
+                {% endfor %}
+            </ul>
+        </div>
     </form>
 
 {% endblock %}

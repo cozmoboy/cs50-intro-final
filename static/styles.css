@@ -325,3 +325,36 @@ ul.no-bullets {
     margin: 0;
     /* Remove margins */
 }
+
+.beastDiv {
+    height: 75vh;
+    width: 65%;
+    overflow: scroll;
+    padding-top: 20px;
+    content: center;
+    border: black solid 1px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.beastTitle {
+    font-family: WickedGrit;
+    color: darkblue;
+    font-size: large;
+}
+
+.beastStats {
+    font-family: WickedGrit;
+    font-size: medium;
+    color: darkred;
+}
+
+.beastDescription {
+    font-size: medium;
+}
+
+.statSpan {
+    color: black;
+}
