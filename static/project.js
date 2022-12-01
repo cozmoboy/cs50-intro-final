@@ -314,6 +314,7 @@ function addItemPopover(attStr, myVal) {
 
 }
 
+
 function addItemToInventory() {
     var inputElement = document.getElementById('itemInput')
     var itemString = inputElement.value;
@@ -321,6 +322,7 @@ function addItemToInventory() {
         var itemsList = document.getElementById("itemsList");
         var htmlString = itemString + "<button class='removeButton' onclick=\"removeItem('" + itemString + "')\">remove</button>";
         var listItem = document.createElement('li');
+        listItem.id = itemString;
         listItem.innerHTML = htmlString;
 
         itemsList.appendChild(listItem);
