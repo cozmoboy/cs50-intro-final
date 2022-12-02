@@ -6,6 +6,33 @@
 
 {% block main %}
 
+    <div><span class="nameDiv">INTERACTION ROSTER</span> <button class="rollButton" id="rollButton">roll</br>dice</button></div>
+    Attributes are shown as: STR/DEX/INT/PRE.</br>
+    {% for foe in allFoes %}
+        {% for n in range(foe.number) %}
+        <div class="enemyDiv alive" id="{{ foe.enemy.name }}{{ n + 1 }}">
+            <span class="foeName">{{ foe.enemy.name }}&nbsp;{{ n + 1 }}</span>
+            <div class="foehpDiv">
+                <b>ATTR: {{ foe.enemy.statBlock }}&nbsp;&nbsp;&nbsp;
+                HP: <span id="{{ foe.enemy.name }}{{ n + 1 }}HP">{{ foe.enemy.hp }}</span></b>
+                <input type="hidden" id="{{ foe.enemy.name }}{{ n + 1 }}MAX" value="{{ foe.enemy.hp }}">
+                <button onclick="changeHPby('{{ foe.enemy.name }}{{ n + 1 }}', 1)">+</button>
+                <button onclick="changeHPby('{{ foe.enemy.name }}{{ n + 1 }}', -1)">-</button>
+                </br>
+                To-Target: {{ foe.enemy.toTarget }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AV: {{ foe.enemy.av }}
+            </div>
+            <div class="foeDesc">
+                {{ foe.enemy.description }}
+            </div>
+            {% if foe.enemy.specials is defined and foe.enemy.specials != "" %}
+                <div class="foeDesc">
+                    Specials: {{ foe.enemy.specials }}
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% endfor %}
+
     <script>
         function changeHPby(foeName, amt) {
             foeElement = document.getElementById(foeName)
@@ -31,24 +58,22 @@
 
         }
 
+        const rollB = document.getElementById("rollButton");
+        rollB.addEventListener('click', function(){ popoverDice("Attributes", "none") }, false);
+
     </script>
 
+    <article id="characterMakerArticle">
+        <div class="container" id="container"></div>
+        <!-- <div class="container" id="container"></div>
+        
+        <div class="buttonPanel panel" id="buttonPanel">
+            
+        </div> -->
 
+        <div class="characterPanel panel" id="characterViewPanel">
 
-    BATTLE STUFF WILL GO HERE.........
-    {% for foe in allFoes %}
-        {% for n in range(foe.number) %}
-        <div class="enemyDiv alive" id="{{ foe.enemy.name }}{{ n + 1 }}">
-            <span class="foeName">{{ foe.enemy.name }}&nbsp;{{ n + 1 }}</span>
-            <div class="foehpDiv">
-                HP: <span id="{{ foe.enemy.name }}{{ n + 1 }}HP">{{ foe.enemy.hp }}</span>
-                <input type="hidden" id="{{ foe.enemy.name }}{{ n + 1 }}MAX" value="{{ foe.enemy.hp }}">
-                <button onclick="changeHPby('{{ foe.enemy.name }}{{ n + 1 }}', 1)">+</button>
-                <button onclick="changeHPby('{{ foe.enemy.name }}{{ n + 1 }}', -1)">-</button>
-             </div>
-        </br>
-            stats: {{ foe.enemy.statBlock }}
         </div>
-        {% endfor %}
-    {% endfor %}
+    </article>
+
 {% endblock %}

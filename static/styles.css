@@ -164,25 +164,17 @@ td {
 }
 
 .overlayElement {
-    border: 2px solid rgb(142, 166, 175);
+    border: 2px solid black;
     text-align: center;
+    padding: 5px;
     background-color: whitesmoke;
-    /* width: 70%; */
-    /* margin: 10% auto; */
-    /* background: rgba(31, 38, 56, 0.514); */
-    /* background: pink; */
-    /* position: absolute; */
     justify-content: center;
     align-items: center;
     position: fixed;
-    /* display: flex; */
-    /* overflow: scroll; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* margin: 10%; */
-    /* margin-right: -50%; */
-    border-radius: 15px;
+    /* border-radius: 15px; */
 }
 
 .translucent {
@@ -190,11 +182,17 @@ td {
 }
 
 .diceButton {
-    background-color: red;
+    background-color: darkblue;
     color: white;
-    border-radius: 15px;
+    border-radius: 5px;
     border: solid black 3px;
     margin: 4px;
+    font-family: WickedGrit;
+}
+
+.diceImg {
+    width: 50px;
+    margin: 10px
 }
 
 .itemP {
@@ -355,12 +353,24 @@ ul.no-bullets {
     font-size: medium;
 }
 
+.foeName {
+    font-family: WickedGrit;
+}
+
 .statSpan {
     color: black;
 }
 
 .enemyDiv {
     border: black solid 1px;
+    margin: 2px;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alive {
+    background-color: whitesmoke;
 }
 
 .alive .foeName {
@@ -369,4 +379,18 @@ ul.no-bullets {
 
 .dead {
     color: rgb(143, 140, 140);
+    background-color: darkgray;
+}
+
+.foeDesc {
+    font-size: small;
+}
+
+.rollButton {
+    font-family: AmerType;
+    font-size: small;
+}
+
+.smallFont {
+    font-size: x-small;
 }

@@ -14,6 +14,8 @@ function removeOverlayMenu() {
 
 function popoverDice(attStr, myVal) {
 
+    console.log(">>>>>>>> POPOVER DICE <<<<<<<<<<<<");
+
     removeOverlayMenu();
     //var container = document.getElementById("container");
     //container.style.display = "flex";
@@ -22,7 +24,7 @@ function popoverDice(attStr, myVal) {
 
     // BUTTONS..............
     var bd6 = document.createElement("button");
-    bd6.innerHTML = "1d6<br>disadvantage";
+    bd6.innerHTML = "1d6<p class='toTest'>disadvantage</p>";
     bd6.className = "diceButton"
     bd6.onclick = function() {
         tumbleDice(1, "dice");
@@ -30,7 +32,7 @@ function popoverDice(attStr, myVal) {
     };
 
     var b2d6 = document.createElement("button");
-    b2d6.innerHTML = "2d6<br>normal";
+    b2d6.innerHTML = "2d6<br><p class='toTest'>normal</p>";
     b2d6.className = "diceButton"
     b2d6.onclick = function() {
         tumbleDice(2, "dice");
@@ -38,7 +40,7 @@ function popoverDice(attStr, myVal) {
     }
 
     var b3d6 = document.createElement("button");
-    b3d6.innerHTML = "3d6<br>advantage";
+    b3d6.innerHTML = "3d6<br><p class='toTest'>advantage</p>";
     b3d6.className = "diceButton"
     b3d6.onclick = function() {
         tumbleDice(3, "dice");
@@ -74,7 +76,7 @@ function popoverDice(attStr, myVal) {
     diceDiv.style.color = "black";
     diceDiv.id = "dice";
     // diceDiv.innerHTML = "\u{2680}" + "  " + "\u{2680}";
-    diceDiv.innerHTML = "<img src=\"/static/dice/d1.png\"style=\"width:50px; margin: 10px\"/>" + "<img src=\"/static/dice/d1.png\"style=\"width:50px; margin: 10px\"/>";;
+    diceDiv.innerHTML = "<img src=\"/static/dice/d1.png\"class=\"diceImg\"/>" + "<img src=\"/static/dice/d1.png\"class=\"diceImg\"/>";
 
     var dangerDieDiv = document.createElement("div");
     dangerDieDiv.style.fontSize = "50px";
@@ -82,7 +84,7 @@ function popoverDice(attStr, myVal) {
     dangerDieDiv.id = "dangerDie";
     //dangerDieDiv.innerHTML = "\u{2680}";
     // dangerDieDiv.innerHTML = "<img src=\"/static/dice/d1.png\"style=\"width:50px; margin: 10px; filter: invert(100%) saturate(1000%);\"/>";
-    dangerDieDiv.innerHTML = "<img src=\"/static/dice/d1R.png\"style=\"width:50px; margin: 10px\"/>";
+    dangerDieDiv.innerHTML = "<img src=\"/static/dice/d1R.png\"class=\"diceImg\"/>";
 
 
     var dangerButtonDiv = document.createElement("div");
@@ -111,23 +113,30 @@ function popoverDice(attStr, myVal) {
 
 function popoverString(att, val) {
 
-    var rank = rankOfAttribute(val);
 
     var successNumString = "";
 
-    if (rank == "LOW") {
-        successNumString = "You're " + att + " value is LOW.<br>You succeed if any of the dice show a 6.\n";
-    } else if (rank == "AVERAGE") {
-        successNumString = "You're " + att + " value is AVERAGE.<br>You succeed if any of the dice show a 5 or a 6.\n";
-    } else if (rank == "HIGH") {
-        successNumString = "You're " + att + " value is HIGH.<br>You succeed if any of the dice show a 4, 5, or 6.\n";
-    } else if (rank == "SUPER") {
-        successNumString = "You're " + att + " value is SUPER.<br>You succeed if any of the dice show a 3, 4, 5, or 6.\n";
+    if (att == "Attributes") {
+        successNumString = "NPC checks succeed when a 5 or 6 shows on either die, or you can use the attributes to modify the roll."
     } else {
-        successNumString = "We can't tell what your " + att + "is.<br>Roll the dice and let the GM decide what to do."
-    }
 
-    var myString = "You're rolling an " + att + " check.<br> " + successNumString;
+        var rank = rankOfAttribute(val);
+
+        if (rank == "LOW") {
+            successNumString = "You're " + att + " value is LOW.<br>You succeed if any of the dice show a 6.\n";
+        } else if (rank == "AVERAGE") {
+            successNumString = "You're " + att + " value is AVERAGE.<br>You succeed if any of the dice show a 5 or a 6.\n";
+        } else if (rank == "HIGH") {
+            successNumString = "You're " + att + " value is HIGH.<br>You succeed if any of the dice show a 4, 5, or 6.\n";
+        } else if (rank == "SUPER") {
+            successNumString = "You're " + att + " value is SUPER.<br>You succeed if any of the dice show a 3, 4, 5, or 6.\n";
+        } else {
+            successNumString = "We can't tell what your " + att + "is.<br>Roll the dice and let the GM decide what to do."
+        }
+
+        var myString = "You're rolling an " + att + " check.<br> " + successNumString;
+
+    }
 
     return myString
 }
@@ -301,13 +310,6 @@ function addItemPopover(attStr, myVal) {
     popoverView.appendChild(itemInput);
     popoverView.appendChild(addButton);
     popoverView.appendChild(cancelButton);
-    // popoverView.appendChild(selectButtonsP);
-    // popoverView.appendChild(attDiv);
-    // popoverView.appendChild(diceDiv);
-    // popoverView.appendChild(dangerDieDiv);
-    // popoverView.appendChild(dangerButtonDiv);
-
-
 
     document.getElementById("container").appendChild(popoverView);
 
@@ -330,9 +332,5 @@ function addItemToInventory() {
 
 
     }
-
-
-    // {{ item }}      <button class='removeButton' onclick=\"removeItem('       {{ item }}         ')\">remove</button>
-
 
 }
