@@ -1,7 +1,3 @@
-import os
-#import math
-#import ast
-import helpers
 import classes
 import dataBG
 import bestiaryAll
@@ -73,15 +69,6 @@ def pcMain():
         pc = makePCofClass(cClass, genre)
         return render_template("/pcMain.html", pc=pc)
 
-        # if session.get("pc"):
-        #     print('EXISTING pc', flush=True)
-        #     pc = session.get("pc")
-        #     return render_template("/pcMain.html", pc=pc)
-        # else:
-        #     print('NEW pc', flush=True)
-        #     pc = makePCofClass(cClass, genre)
-        #     return render_template("/pcMain.html", pc=pc)
-
     if session.get("pc"):
         print('EXISTING pc', flush=True)
         pc = session.get("pc")
@@ -134,33 +121,6 @@ def fantasyPC():
         return render_template("/fantasyPC.html", genre=dictionaryWithNameFromArray("fantasy", dataBG.GENRES))
 
 
-@app.route("/westernPC", methods=["GET", "POST"])
-def westernPC():
-    if request.method == "POST":
-        return render_template("/westernPC.html")
-    # User reached route via GET (as by clicking a link or via redirect)
-    else:
-        return render_template("/westernPC.html")
-
-
-@app.route("/scifiPC", methods=["GET", "POST"])
-def scifiPC():
-    if request.method == "POST":
-        return render_template("/scifiPC.html")
-    # User reached route via GET (as by clicking a link or via redirect)
-    else:
-        return render_template("/scifiPC.html")
-
-
-@app.route("/postApPC", methods=["GET", "POST"])
-def postApPC():
-    if request.method == "POST":
-        return render_template("/postApPC.html")
-    # User reached route via GET (as by clicking a link or via redirect)
-    else:
-        return render_template("/postApPC.html")
-
-
 @app.route("/bestiary", methods=["GET", "POST"])
 def besiary():
     if request.method == "POST":
@@ -170,16 +130,16 @@ def besiary():
 
     else:
         myBestiary = bestiaryAll.BESTIARY
-        # newlist = sorted(myBestiary, key=itemgetter('name')) 
         newlist = sorted(myBestiary, key=lambda d: d['name'])
         return render_template("/bestiary.html", bestiary=newlist)
     
+    
 @app.route("/updateHP", methods=["GET", "POST"])
 def updateHP():
+    
     newHP = request.form.get("currentHPInput")
     setCurrentHP(newHP)
-    print('changing current HP: ', flush=True)
-    print(newHP, flush=True)
+
     return redirect("/pcMain.html")
     
     
@@ -194,20 +154,16 @@ def rules():
 @app.route("/battleGM", methods=["GET", "POST"])
 def battleGM():
     if request.method == "POST":
-        # enemies = request.args.get("bestiaryList")
+
         enemies = request.form.getlist('name')
         numbers = request.form.getlist('quantity')
-        
-        # print("enemies returned from bestiary........................", flush=True)
-        # print(enemies, flush=True)
-        # print(">>>>>> number of enemies returned from bestiary........................", flush=True)
-        # print(numbers, flush=True)
         
         allFoes = []
         i = 0
         while i<len(enemies):
+            
             if numbers[i] != '':
-                
+            
                 myDict = {
                     "enemy": dictionaryWithNameFromArray(enemies[i], bestiaryAll.BESTIARY),
                     "number": int(numbers[i])
@@ -215,9 +171,6 @@ def battleGM():
                 allFoes.append(myDict)
                 
             i += 1
-        
-        print(">>>>>> FOES FOR FIGHT ........................", flush=True)
-        print(allFoes, flush=True)
         
         return render_template("/battleGM.html", allFoes = allFoes)
     
